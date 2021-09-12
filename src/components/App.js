@@ -8,7 +8,7 @@ export const App = () => (
   <>
     <Route
       render={() => {
-        if (localStorage.getItem("uteachilearn_user")) {
+        if (localStorage.getItem("uteachilearn_token")) {
           return (
             <>
               <ApplicationViews />
