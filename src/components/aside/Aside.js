@@ -14,7 +14,7 @@ export const Aside = () => {
           <Link>Categories</Link>
         </div>
         <div className="block p-4 text-grey-darker font-bold border-purple hover:bg-grey-lighter border-r-4">
-          <Link>Messages</Link>
+          <Link to={`/messages`}>Messages</Link>
         </div>
         <div className="block p-4 text-grey-darker font-bold border-purple hover:bg-grey-lighter border-r-4">
           <Link>Profile</Link>
