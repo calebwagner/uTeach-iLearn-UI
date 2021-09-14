@@ -105,12 +105,12 @@ export const MessageForm = () => {
       >
         Create
       </button>
-      <button
+      {/* <button
         className="py-2 px-4 bg-red-700 text-white font-semibold rounded-lg shadow-md hover:bg-red-500 focus:outline-none focus:ring-2 focus:ring-green-400 focus:ring-opacity-75"
         onClick={() => history.push("/messages")}
       >
         Cancel
-      </button>
+      </button> */}
     </form>
   );
 };
