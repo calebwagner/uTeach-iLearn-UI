@@ -12,7 +12,7 @@ export const CategoryProvider = (props) => {
       },
     })
       .then((res) => res.json())
-      .then((data) => setCategories(data));
+      .then(setCategories);
   };
 
   const getCategoryById = (categoryId) => {
@@ -47,11 +47,11 @@ export const CategoryProvider = (props) => {
     return fetch(`http://localhost:8000/categories/${category.id}`, {
       method: "PUT",
       headers: {
-        "Content-Type": "application/json",
         Authorization: `Token ${localStorage.getItem("uteachilearn_token")}`,
+        "Content-Type": "application/json",
       },
       body: JSON.stringify(category),
-    }).then(getCategories(category));
+    }).then(getCategories);
   };
 
   return (

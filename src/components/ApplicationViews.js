@@ -1,5 +1,7 @@
 import React from "react";
 import { Route } from "react-router-dom";
+import { UpdateCategory } from "./categories/CategoryEdit";
+import { CategoryList } from "./categories/CategoryList";
 import { CategoryProvider } from "./categories/CategoryProvider";
 import { MessageList } from "./messages/MessageList";
 import { MessageProvider } from "./messages/MessageProvider";
@@ -30,6 +32,14 @@ export const ApplicationViews = () => {
 
               <Route exact path="/messages">
                 <MessageList />
+              </Route>
+
+              <Route exact path="/categories">
+                <CategoryList />
+              </Route>
+
+              <Route exact path="/categories/edit/:categoryId">
+                <UpdateCategory />
               </Route>
             </UserProvider>
           </MessageProvider>
