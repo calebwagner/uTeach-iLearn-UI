@@ -23,7 +23,7 @@ export const PostDetail = ({ post }) => {
           <div className="space-y-4">
             <h3 className="">
               <Link to={`/edit/${post.id}`}>
-                Title: {post.title} ||{" "}
+                Title: {post.title} ||
                 <div className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">
                   {post.category?.title}
                 </div>
