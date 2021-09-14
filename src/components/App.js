@@ -13,13 +13,13 @@ export const App = () => (
         if (localStorage.getItem("uteachilearn_token")) {
           return (
             <>
-              <div className="flex col-span-3 sticky top-0 z-50">
-                <aside class="col-span-3 sticky top-0 z-50">
+              <div className=" col-span-3 sticky top-0 z-50 ">
+                <aside class="col-span-3 sticky top-0">
                   <Aside />
                 </aside>
-                <div class="col-span-3 sticky top-0 z-50">
+                {/* <div class="col-span-3 sticky top-0 z-50">
                   <SearchBar />
-                </div>
+                </div> */}
               </div>
               <main class="col-span-8">
                 <ApplicationViews />
