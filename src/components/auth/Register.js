@@ -62,15 +62,20 @@ export const Register = (props) => {
         </button>
       </dialog>
 
-      <form className="form--login" onSubmit={handleRegister}>
+      <form
+        className="form--login bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4"
+        onSubmit={handleRegister}
+      >
         <h1 className="h3 mb-3 font-weight-normal">Register an account</h1>
         <fieldset>
-          <label htmlFor="firstName"> First Name </label>
+          <label htmlFor="firstName block text-gray-700 text-sm font-bold mb-2">
+            First Name
+          </label>
           <input
             ref={firstName}
             type="text"
             name="firstName"
-            className="form-control"
+            className="form-control shadow appearance-none border rounded  py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             placeholder="First name"
             required
             autoFocus
@@ -82,7 +87,7 @@ export const Register = (props) => {
             ref={lastName}
             type="text"
             name="lastName"
-            className="form-control"
+            className="form-control shadow appearance-none border rounded  py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             placeholder="Last name"
             required
           />
@@ -93,7 +98,7 @@ export const Register = (props) => {
             ref={email}
             type="email"
             name="email"
-            className="form-control"
+            className="form-control shadow appearance-none border rounded  py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             placeholder="Email address"
             required
           />
@@ -104,7 +109,7 @@ export const Register = (props) => {
             ref={image_url}
             type="image_url"
             name="image_url"
-            className="form-control"
+            className="form-control shadow appearance-none border rounded  py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             placeholder="profile image"
             required
           />
@@ -115,7 +120,7 @@ export const Register = (props) => {
             ref={password}
             type="password"
             name="password"
-            className="form-control"
+            className="form-control shadow appearance-none border rounded  py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             placeholder="Password"
             required
           />
@@ -126,7 +131,7 @@ export const Register = (props) => {
             ref={verifyPassword}
             type="password"
             name="verifyPassword"
-            className="form-control"
+            className="form-control shadow appearance-none border rounded  py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             placeholder="Verify password"
             required
           />
@@ -136,7 +141,7 @@ export const Register = (props) => {
           <textarea
             ref={bio}
             name="bio"
-            className="form-control"
+            className="form-control shadow appearance-none border rounded  py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             placeholder="Let other gamers know a little bit about you..."
           />
         </fieldset>
@@ -145,12 +150,15 @@ export const Register = (props) => {
             textAlign: "center",
           }}
         >
-          <button className="btn btn-1 btn-sep icon-send" type="submit">
+          <button
+            className="m-8 py-2 px-4 bg-blue-700 text-white font-semibold rounded-lg shadow-md hover:bg-blue-500 focus:outline-none focus:ring-2 focus:ring-green-400 focus:ring-opacity-75"
+            type="submit"
+          >
             Register
           </button>
         </fieldset>
       </form>
-      <section className="link--register">
+      <section className="link--register m-8 py-2 px-4 bg-blue-700 text-white font-semibold rounded-lg shadow-md hover:bg-blue-500 focus:outline-none focus:ring-2 focus:ring-green-400 focus:ring-opacity-75">
         Already registered? <Link to="/login">Login</Link>
       </section>
     </main>

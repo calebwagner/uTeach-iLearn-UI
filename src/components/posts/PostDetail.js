@@ -3,15 +3,29 @@ import { Link, useParams } from "react-router-dom";
 import { PostContext } from "./PostProvider";
 import "tailwindcss/tailwind.css";
 import "./css/PostDetail.css";
+import { ProfileContext } from "../profile/ProfileProvider";
 
 export const PostDetail = ({ post }) => {
   const { posts, getPosts, deletePost } = useContext(PostContext);
+  const { getProfileById, getProfile } = useContext(ProfileContext);
+  const { profileId } = useParams();
+
+  const [profile, setProfile] = useState({});
+
+  useEffect(() => {
+    getProfileById(parseInt(profileId)).then(setProfile);
+  }, []);
+
+  //   useEffect(() => {
+  //     getProfile();
+  //   }, []);
 
   return (
     <section className="p-8 max-w-md mx-auto bg-white rounded-xl shadow-md overflow-hidden md:max-w-2xl">
       <div className="md:flex-shrink-0">
         <div className="flex">
-          <Link to={`/posts/${post.id}`}>
+          {/* TODO: */}
+          <Link to={`/userprofile/${profileId}`}>
             <img
               className="h-48 w-16 object-scale-down	 md:w-48"
               //   src={post.user.image_url}

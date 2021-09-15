@@ -15,8 +15,16 @@ export const ProfileProvider = (props) => {
       .then(setProfile);
   };
 
+  const getProfileById = (profileId) => {
+    return fetch(`http://localhost:8000/profile/${profileId}`, {
+      headers: {
+        Authorization: `Token ${localStorage.getItem("uteachilearn_token")}`,
+      },
+    }).then((res) => res.json());
+  };
+
   return (
-    <ProfileContext.Provider value={{ profile, getProfile }}>
+    <ProfileContext.Provider value={{ profile, getProfile, getProfileById }}>
       {props.children}
     </ProfileContext.Provider>
   );

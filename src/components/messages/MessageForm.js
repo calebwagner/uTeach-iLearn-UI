@@ -1,10 +1,10 @@
 import React, { useContext, useState, useEffect } from "react";
-import { useHistory, useParams } from "react-router-dom";
+// import { useHistory, useParams } from "react-router-dom";
 import { UserContext } from "../users/UserProviders";
 import { MessageContext } from "./MessageProvider";
 
 export const MessageForm = () => {
-  const history = useHistory();
+  // const history = useHistory();
   const { sendMessage } = useContext(MessageContext);
   const { getUsers, users } = useContext(UserContext);
 
