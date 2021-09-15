@@ -19,6 +19,9 @@ export const Aside = () => {
         <div className="block p-4 text-grey-darker font-bold border-purple hover:bg-grey-lighter border-r-4">
           <Link to={`/profile`}>Profile</Link>
         </div>
+        <div className="block p-4 text-grey-darker font-bold border-purple hover:bg-grey-lighter border-r-4">
+          <Link to={`/users`}>Users</Link>
+        </div>
       </div>
     </section>
   );
