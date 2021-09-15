@@ -1,53 +1,35 @@
-// import React, { useEffect, useContext } from "react";
-// import { ProfileContext } from "./ProfileProvider.js";
+import React, { useEffect, useContext } from "react";
+import { ProfileContext } from "./ProfileProvider.js";
 
-// export const Profile = () => {
-//   const { profile, getProfile } = useContext(ProfileContext);
+export const Profile = () => {
+  const { profile, getProfile } = useContext(ProfileContext);
 
-//   useEffect(() => {
-//     getProfile();
-//   }, []);
+  useEffect(() => {
+    getProfile();
+  }, []);
 
-//   return (
-//     <article className="profile">
-//       <header>
-//         <h1>Your Profile</h1>
-//       </header>
-//       <section className="profile__info">
-//         <header className="profile__header">
-//           <h3>Your Info</h3>
-//         </header>
-//         <div className="profile__name">
-//           Welcome: {profile. && profile.gamer.user.first_name}{" "}
-//           {profile.gamer && profile.gamer.user.last_name}
-//         </div>
-//         <div className="profile__username">
-//           Username: {profile.gamer && profile.gamer.user.username}
-//         </div>
-//         <div className="profile__bio">
-//           About you: {profile.gamer && profile.gamer.bio}
-//         </div>
-//       </section>
-//       <section className="profile__registrations">
-//         <header className="registrations__header">
-//           <h3>Your Events</h3>
-//         </header>
-//         <div className="registrations">
-//           {profile.events.map((event) => {
-//             return (
-//               <div key={event.id} className="registration">
-//                 <div className="registration__game">
-//                   <h3>{event.title}</h3>
-//                 </div>
-//                 <div>{event.description}</div>
-//                 <div>
-//                   {event.date} @ {event.time}
-//                 </div>
-//               </div>
-//             );
-//           })}
-//         </div>
-//       </section>
-//     </article>
-//   );
-// };
+  return (
+    <article className="profile p-8 max-w-md mx-auto bg-white rounded-xl shadow-md overflow-hidden md:max-w-2xl">
+      <header>
+        <h1>Your Profile</h1>
+      </header>
+      <section className="profile__info">
+        <img
+          className="h-48 w-16 object-scale-down md:w-48"
+          //   src={post.user.image_url}
+          //   src={require("./images/profilepic.jpg")}
+          src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg"
+          alt="profile picture"
+        ></img>
+        <div className="profile__name">
+          Welcome: {profile?.app_user?.user?.first_name}
+          {profile?.app_user?.user?.last_name}
+        </div>
+        <div className="profile__username">
+          Username: {profile?.app_user?.user?.username}
+        </div>
+        <div className="profile__bio">About you: {profile?.app_user?.bio}</div>
+      </section>
+    </article>
+  );
+};
