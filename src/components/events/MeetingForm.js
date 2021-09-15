@@ -1,6 +1,6 @@
 import React, { useContext, useState, useEffect } from "react";
 import { ConnectionContext } from "../connections/ConnectionProvider";
-import { MessageContext } from "../messages/MessageProvider";
+// import { MessageContext } from "../messages/MessageProvider";
 import { MeetingContext } from "./MeetingProvider";
 
 export const MeetingForm = () => {
@@ -65,6 +65,7 @@ export const MeetingForm = () => {
             name="scheduled_date"
             required
             autoFocus
+            placeholder="MM/DD/YY"
             className="form-control form-control shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             value={currentMeeting.scheduled_date}
             onChange={changeMeetingState}

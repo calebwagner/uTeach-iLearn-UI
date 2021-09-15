@@ -4,28 +4,25 @@ import { PostContext } from "./PostProvider";
 import "tailwindcss/tailwind.css";
 import "./css/PostDetail.css";
 import { ProfileContext } from "../profile/ProfileProvider";
+import { AuthorContext } from "../authors/AuthorProvider";
 
 export const PostDetail = ({ post }) => {
   const { posts, getPosts, deletePost } = useContext(PostContext);
   const { getProfileById, getProfile } = useContext(ProfileContext);
-  const { profileId } = useParams();
-
-  const [profile, setProfile] = useState({});
+  const { getAuthorById, author, getAuthors } = useContext(AuthorContext);
+  const [currentAuthor, setCurrentAuthor] = useState([]);
+  const { authorId } = useParams();
 
   useEffect(() => {
-    getProfileById(parseInt(profileId)).then(setProfile);
+    getAuthorById(authorId);
   }, []);
-
-  //   useEffect(() => {
-  //     getProfile();
-  //   }, []);
 
   return (
     <section className="p-8 max-w-md mx-auto bg-white rounded-xl shadow-md overflow-hidden md:max-w-2xl">
       <div className="md:flex-shrink-0">
         <div className="flex">
           {/* TODO: */}
-          <Link to={`/userprofile/${profileId}`}>
+          <Link to={`/authors/${post.user.user.id}`}>
             <img
               className="h-48 w-16 object-scale-down	 md:w-48"
               //   src={post.user.image_url}

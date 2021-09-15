@@ -1,20 +1,36 @@
-import React, { useEffect, useContext } from "react";
+import React, { useEffect, useContext, useState } from "react";
+import { useHistory, useParams, Link } from "react-router-dom";
+import { AuthorContext } from "../authors/AuthorProvider.js";
+import { ConnectionContext } from "../connections/ConnectionProvider.js";
+import { PostContext } from "../posts/PostProvider.js";
 import { ProfileContext } from "./ProfileProvider.js";
 
 export const UserProfile = () => {
   const { profile, getProfile } = useContext(ProfileContext);
+  const [addedConnection, setAddedConnection] = useState();
+  const { posts, getPosts, getPostById } = useContext(PostContext);
+  const { getAuthorById, author } = useContext(AuthorContext);
+  const { authorId } = useParams();
 
   useEffect(() => {
-    getProfile();
+    getAuthorById(authorId);
   }, []);
 
   return (
     <article className="profile p-8 max-w-md mx-auto bg-white rounded-xl shadow-md overflow-hidden md:max-w-2xl">
       <header>
         <h1>
-          Profile of {profile?.app_user?.user?.first_name}
-          {profile?.app_user?.user?.last_name}
+          Profile of {author?.user?.first_name} {author?.user?.last_name}
         </h1>
+        {/* {addConnection ? (
+          <button className="unadd-btn" onClick={unaddConnection}>
+            Unconnect
+          </button>
+        ) : (
+          <button className="add-btn" onClick={addConnection}>
+            Connect
+          </button>
+        )} */}
       </header>
       <section className="profile__info">
         <img
@@ -26,10 +42,13 @@ export const UserProfile = () => {
         ></img>
 
         <div className="profile__username">
-          Username: {profile?.app_user?.user?.username}
+          {/* Username: {profile?.app_user?.user?.username} */}
         </div>
-        <div className="profile__bio">About: {profile?.app_user?.bio}</div>
+        <div className="profile__bio">About: {author?.bio}</div>
       </section>
+      <button className="m-8 py-2 px-4 bg-blue-700 text-white font-semibold rounded-lg shadow-md hover:bg-blue-500 focus:outline-none focus:ring-2 focus:ring-green-400 focus:ring-opacity-75">
+        Connect
+      </button>
     </article>
   );
 };
