@@ -15,8 +15,30 @@ export const ConnectionProvider = (props) => {
       .then(setConnections);
   };
 
+  const addConnection = (connection) => {
+    return fetch("http://localhost:8000/connections", {
+      method: "POST",
+      headers: {
+        Authorization: `Token ${localStorage.getItem("uteachilearn_token")}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(connection),
+    }).then(setConnections);
+  };
+
+  const unaddConnection = (connectionId) => {
+    return fetch(`http://localhost:8000/messages/${connectionId}`, {
+      method: "DELETE",
+      headers: {
+        Authorization: `Token ${localStorage.getItem("uteachilearn_token")}`,
+      },
+    }).then(getConnections);
+  };
+
   return (
-    <ConnectionContext.Provider value={{ connections, getConnections }}>
+    <ConnectionContext.Provider
+      value={{ connections, getConnections, addConnection, unaddConnection }}
+    >
       {props.children}
     </ConnectionContext.Provider>
   );
