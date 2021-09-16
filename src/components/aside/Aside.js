@@ -22,6 +22,16 @@ export const Aside = () => {
         <div className="block p-4 text-grey-darker font-bold border-purple hover:bg-grey-lighter border-r-4">
           <Link to={`/users`}>Users</Link>
         </div>
+        <div>
+          <Link
+            className="block p-4 text-grey-darker font-bold border-purple hover:bg-grey-lighter border-r-4"
+            onClick={(event) => {
+              localStorage.removeItem("uteachilearn_token");
+            }}
+          >
+            Logout
+          </Link>
+        </div>
       </div>
     </section>
   );
