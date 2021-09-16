@@ -8,7 +8,6 @@ import { ProfileContext } from "./ProfileProvider.js";
 
 export const UsersProfileDetail = () => {
   const { profile, getProfile, getProfileById } = useContext(ProfileContext);
-  const [addedConnection, setAddedConnection] = useState();
   const { posts, getPosts, getPostById } = useContext(PostContext);
   const { unaddConnection, addConnection, getConnections, connections } =
     useContext(ConnectionContext);
@@ -21,10 +20,10 @@ export const UsersProfileDetail = () => {
 
   useEffect(() => {
     getConnections().then(() => {
-      const foundConnection = connections.find((connected) => {
-        return users.user.id === connected.profile.user.id;
+      const alreadyConnected = connections.find((connected) => {
+        return parseInt(authorId) === connected.profile.user.id;
       });
-      if (foundConnection) {
+      if (alreadyConnected) {
         setIsConnected(true);
       } else {
         setIsConnected(false);
@@ -34,19 +33,19 @@ export const UsersProfileDetail = () => {
 
   const addAConnection = () => {
     addConnection({
-      user: users.user.id,
-      profile: users.id,
+      user: users.user?.id,
+      profile: parseInt(authorId),
     }).then(() => {
       history.push(`/authors/${authorId}`);
     });
   };
 
-  const foundConnection = connections.find((connected) => {
-    return users.id === connected.profile.user.id;
+  const alreadyConnected = connections.find((connected) => {
+    return parseInt(authorId) === connected.profile.user.id;
   });
 
   const unaddAConnection = () => {
-    unaddConnection(foundConnection.id).then(() => {
+    unaddConnection(alreadyConnected.id).then(() => {
       history.push(`/authors/${authorId}`);
     });
   };
@@ -76,15 +75,6 @@ export const UsersProfileDetail = () => {
         </div>
         <div className="profile__bio">About: {author?.bio}</div>
       </section>
-      {/* {addConnection ? (
-        <button className="unadd-btn" onClick={unaddConnection}>
-          Unconnect
-        </button>
-      ) : (
-        <button className="add-btn" onClick={addConnection}>
-          Connect
-        </button>
-      )} */}
       {isConnected ? (
         <button
           className="py-2 px-4 bg-red-700 text-white font-semibold rounded-lg shadow-md hover:bg-red-500 focus:outline-none focus:ring-2 focus:ring-green-400 focus:ring-opacity-75"
