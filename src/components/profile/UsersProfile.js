@@ -6,21 +6,49 @@ import { PostContext } from "../posts/PostProvider.js";
 import { UserContext } from "../users/UserProviders.js";
 import { ProfileContext } from "./ProfileProvider.js";
 
-export const UserProfile = ({}) => {
-  const { profile, getProfile } = useContext(ProfileContext);
-  const [addedConnection, setAddedConnection] = useState();
+export const UsersProfileDetail = () => {
+  const { profile, getProfile, getProfileById } = useContext(ProfileContext);
   const { posts, getPosts, getPostById } = useContext(PostContext);
   const { unaddConnection, addConnection, getConnections, connections } =
     useContext(ConnectionContext);
   const { users, getUsers } = useContext(UserContext);
   const { getAuthorById, author } = useContext(AuthorContext);
   const { authorId } = useParams();
+  const history = useHistory();
 
-  const [isConnected, setIsConnected] = useState({});
+  const [isConnected, setIsConnected] = useState();
 
-  //   useEffect(() => {
-  //     getConnections();
-  //   });
+  useEffect(() => {
+    getConnections().then(() => {
+      const alreadyConnected = connections.find((connected) => {
+        return parseInt(authorId) === connected.profile.user.id;
+      });
+      if (alreadyConnected) {
+        setIsConnected(true);
+      } else {
+        setIsConnected(false);
+      }
+    });
+  }, [isConnected]);
+
+  const addAConnection = () => {
+    addConnection({
+      user: users.user?.id,
+      profile: parseInt(authorId),
+    }).then(() => {
+      history.push(`/authors/${authorId}`);
+    });
+  };
+
+  const alreadyConnected = connections.find((connected) => {
+    return parseInt(authorId) === connected.profile.user.id;
+  });
+
+  const unaddAConnection = () => {
+    unaddConnection(alreadyConnected.id).then(() => {
+      history.push(`/authors/${authorId}`);
+    });
+  };
 
   useEffect(() => {
     getAuthorById(authorId);
@@ -47,21 +75,21 @@ export const UserProfile = ({}) => {
         </div>
         <div className="profile__bio">About: {author?.bio}</div>
       </section>
-      {/* {addConnection ? (
-        <button className="unadd-btn" onClick={unaddConnection}>
+      {isConnected ? (
+        <button
+          className="py-2 px-4 bg-red-700 text-white font-semibold rounded-lg shadow-md hover:bg-red-500 focus:outline-none focus:ring-2 focus:ring-green-400 focus:ring-opacity-75"
+          onClick={unaddAConnection}
+        >
           Unconnect
         </button>
       ) : (
-        <button className="add-btn" onClick={addConnection}>
+        <button
+          className="connect-btn m-8 py-2 px-4 bg-blue-700 text-white font-semibold rounded-lg shadow-md hover:bg-blue-500 focus:outline-none focus:ring-2 focus:ring-green-400 focus:ring-opacity-75"
+          onClick={addAConnection}
+        >
           Connect
         </button>
-      )} */}
-      <button
-        className="connect-btn m-8 py-2 px-4 bg-blue-700 text-white font-semibold rounded-lg shadow-md hover:bg-blue-500 focus:outline-none focus:ring-2 focus:ring-green-400 focus:ring-opacity-75"
-        onClick={addConnection}
-      >
-        Connect
-      </button>
+      )}
     </article>
   );
 };
