@@ -23,11 +23,11 @@ export const ConnectionProvider = (props) => {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(connection),
-    }).then(setConnections);
+    }).then(getConnections);
   };
 
   const unaddConnection = (connectionId) => {
-    return fetch(`http://localhost:8000/messages/${connectionId}`, {
+    return fetch(`http://localhost:8000/connections/${connectionId}`, {
       method: "DELETE",
       headers: {
         Authorization: `Token ${localStorage.getItem("uteachilearn_token")}`,
