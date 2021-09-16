@@ -6,7 +6,7 @@ import { PostContext } from "../posts/PostProvider.js";
 import { UserContext } from "../users/UserProviders.js";
 import { ProfileContext } from "./ProfileProvider.js";
 
-export const UsersProfileDetail = ({ user }) => {
+export const UsersProfileDetail = () => {
   const { profile, getProfile, getProfileById } = useContext(ProfileContext);
   const [addedConnection, setAddedConnection] = useState();
   const { posts, getPosts, getPostById } = useContext(PostContext);
@@ -14,7 +14,7 @@ export const UsersProfileDetail = ({ user }) => {
     useContext(ConnectionContext);
   const { users, getUsers } = useContext(UserContext);
   const { getAuthorById, author } = useContext(AuthorContext);
-  const { profileId } = useParams();
+  const { authorId } = useParams();
   const history = useHistory();
 
   const [isConnected, setIsConnected] = useState();
@@ -22,7 +22,7 @@ export const UsersProfileDetail = ({ user }) => {
   useEffect(() => {
     getConnections().then(() => {
       const foundConnection = connections.find((connected) => {
-        return user.user.id === connected.profile.user.id;
+        return users.user.id === connected.profile.user.id;
       });
       if (foundConnection) {
         setIsConnected(true);
@@ -34,25 +34,25 @@ export const UsersProfileDetail = ({ user }) => {
 
   const addAConnection = () => {
     addConnection({
-      user: user.user.id,
-      profile: user.id,
+      user: users.user.id,
+      profile: users.id,
     }).then(() => {
-      history.push("/users");
+      history.push(`/authors/${authorId}`);
     });
   };
 
   const foundConnection = connections.find((connected) => {
-    return user.id === connected.profile.user.id;
+    return users.id === connected.profile.user.id;
   });
 
   const unaddAConnection = () => {
     unaddConnection(foundConnection.id).then(() => {
-      history.push("/users");
+      history.push(`/authors/${authorId}`);
     });
   };
 
   useEffect(() => {
-    getProfileById(profileId);
+    getAuthorById(authorId);
   }, []);
 
   return (
