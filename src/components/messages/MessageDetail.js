@@ -27,7 +27,7 @@ export const MessageDetail = ({ message }) => {
             </div>
             <div>Date: {message.timestamp}</div>
             <div>
-              Recipient: {message.recipient.user.id}:{" "}
+              Recipient: {message.recipient.user.id}:
               {message.user.user.first_name}
               {message.user.user.last_name}
             </div>
