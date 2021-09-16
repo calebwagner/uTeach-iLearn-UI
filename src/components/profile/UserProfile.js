@@ -3,14 +3,24 @@ import { useHistory, useParams, Link } from "react-router-dom";
 import { AuthorContext } from "../authors/AuthorProvider.js";
 import { ConnectionContext } from "../connections/ConnectionProvider.js";
 import { PostContext } from "../posts/PostProvider.js";
+import { UserContext } from "../users/UserProviders.js";
 import { ProfileContext } from "./ProfileProvider.js";
 
-export const UserProfile = () => {
+export const UserProfile = ({}) => {
   const { profile, getProfile } = useContext(ProfileContext);
   const [addedConnection, setAddedConnection] = useState();
   const { posts, getPosts, getPostById } = useContext(PostContext);
+  const { unaddConnection, addConnection, getConnections, connections } =
+    useContext(ConnectionContext);
+  const { users, getUsers } = useContext(UserContext);
   const { getAuthorById, author } = useContext(AuthorContext);
   const { authorId } = useParams();
+
+  const [isConnected, setIsConnected] = useState({});
+
+  //   useEffect(() => {
+  //     getConnections();
+  //   });
 
   useEffect(() => {
     getAuthorById(authorId);
@@ -22,15 +32,6 @@ export const UserProfile = () => {
         <h1>
           Profile of {author?.user?.first_name} {author?.user?.last_name}
         </h1>
-        {/* {addConnection ? (
-          <button className="unadd-btn" onClick={unaddConnection}>
-            Unconnect
-          </button>
-        ) : (
-          <button className="add-btn" onClick={addConnection}>
-            Connect
-          </button>
-        )} */}
       </header>
       <section className="profile__info">
         <img
@@ -46,7 +47,19 @@ export const UserProfile = () => {
         </div>
         <div className="profile__bio">About: {author?.bio}</div>
       </section>
-      <button className="m-8 py-2 px-4 bg-blue-700 text-white font-semibold rounded-lg shadow-md hover:bg-blue-500 focus:outline-none focus:ring-2 focus:ring-green-400 focus:ring-opacity-75">
+      {/* {addConnection ? (
+        <button className="unadd-btn" onClick={unaddConnection}>
+          Unconnect
+        </button>
+      ) : (
+        <button className="add-btn" onClick={addConnection}>
+          Connect
+        </button>
+      )} */}
+      <button
+        className="connect-btn m-8 py-2 px-4 bg-blue-700 text-white font-semibold rounded-lg shadow-md hover:bg-blue-500 focus:outline-none focus:ring-2 focus:ring-green-400 focus:ring-opacity-75"
+        onClick={addConnection}
+      >
         Connect
       </button>
     </article>
