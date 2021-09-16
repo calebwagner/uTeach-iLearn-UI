@@ -37,7 +37,7 @@ export const UpdatePost = () => {
   };
 
   const handleClickUpdatePost = (event) => {
-    event.preventDefault(); //Prevents the browser from submitting the form
+    event.preventDefault();
     const newPost = {
       id: currentPost.id,
       title: currentPost.title,

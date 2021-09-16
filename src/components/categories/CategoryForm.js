@@ -1,9 +1,7 @@
-import React, { useContext, useState, useEffect } from "react";
-import { useHistory, useParams } from "react-router-dom";
+import React, { useContext, useState } from "react";
 import { CategoryContext } from "./CategoryProvider";
 
 export const CategoryForm = () => {
-  const history = useHistory();
   const { createCategory } = useContext(CategoryContext);
 
   const [currentCategory, setCurrentCategory] = useState({
@@ -55,7 +53,6 @@ export const CategoryForm = () => {
         type="submit"
         className="m-8 py-2 px-4 bg-blue-700 text-white font-semibold rounded-lg shadow-md hover:bg-blue-500 focus:outline-none focus:ring-2 focus:ring-green-400 focus:ring-opacity-75"
         onClick={(evt) => {
-          // Prevent form from being submitted
           evt.preventDefault();
           const category = {
             title: currentCategory.title,

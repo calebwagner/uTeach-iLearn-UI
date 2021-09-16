@@ -1,28 +1,15 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { PostContext } from "./PostProvider";
-
-import "tailwindcss/tailwind.css";
-import "./css/PostDetail.css";
-import { ProfileContext } from "../profile/ProfileProvider";
 import { AuthorContext } from "../authors/AuthorProvider";
 import { HumanDate } from "../utils/HumanDate";
+import "tailwindcss/tailwind.css";
 
 export const PostDetail = ({ post }) => {
-  const { posts, getPosts, deletePost, getPostById } = useContext(PostContext);
-  const { getProfileById, getProfile } = useContext(ProfileContext);
-  const { getAuthorById, author, getAuthors } = useContext(AuthorContext);
-  const [currentAuthor, setCurrentAuthor] = useState([]);
+  const { deletePost } = useContext(PostContext);
+  const { getAuthorById } = useContext(AuthorContext);
   const { authorId } = useParams();
-  const { postId } = useParams();
-
   const [time, setTime] = useState("");
-
-  //   useEffect(() => {
-  //     getPostById(parseInt(authorId)).then((post) => {
-  //       setPost(post);
-  //     });
-  //   }, []);
 
   useEffect(() => {
     getAuthorById(authorId);
@@ -40,7 +27,6 @@ export const PostDetail = ({ post }) => {
     <section className="p-8 max-w-md mx-auto bg-white rounded-xl shadow-md overflow-hidden md:max-w-2xl">
       <div className="md:flex-shrink-0">
         <div className="flex">
-          {/* TODO: */}
           <Link to={`/authors/${post.user.user.id}`}>
             <img
               className="h-48 w-16 object-scale-down	 md:w-48"
@@ -62,19 +48,18 @@ export const PostDetail = ({ post }) => {
             <div className="inline-">
               Author: {post.user.user.first_name} {post.user.user.last_name}
             </div>
-            <div>Date: {post.created_on}</div>
-            <div>{time}</div>
+            <div>Posted on: {time}</div>
           </div>
         </div>
         <div>
           <h5>Description: {post.description}</h5>
         </div>
-        {/* <img
+        <img
           className="h-48 w-full object-cover md:w-48"
           src="https://www.aihr.com/wp-content/uploads/Learning-and-development.png"
           alt="picture"
-        /> */}
-        {/* <Link to={`/posts/${post.id}`}>Comments</Link> */}
+        />
+
         <div className="flex items-center justify-center">
           <button className="m-8 py-2 px-4 bg-blue-700 text-white font-semibold rounded-lg shadow-md hover:bg-blue-500 focus:outline-none focus:ring-2 focus:ring-green-400 focus:ring-opacity-75">
             Save

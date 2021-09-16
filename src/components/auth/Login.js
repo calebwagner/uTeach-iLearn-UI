@@ -1,6 +1,5 @@
 import React from "react";
 import { Link, useHistory } from "react-router-dom";
-// import "./Auth.css";
 
 export const Login = (props) => {
   const email = React.createRef();

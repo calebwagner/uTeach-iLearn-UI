@@ -1,5 +1,4 @@
-import React, { useState, useContext, useEffect } from "react";
-import { useHistory } from "react-router-dom";
+import React, { useContext, useEffect } from "react";
 import { Meetings } from "./MeetingDetail";
 import { MeetingContext } from "./MeetingProvider";
 
@@ -18,7 +17,6 @@ export const MeetingList = () => {
           {meetings.map((meeting) => {
             return <Meetings key={meeting.id} meeting={meeting} />;
           })}
-          {/* </div> */}
         </div>
       </section>
     </>

@@ -1,12 +1,10 @@
-import React, { useState, useContext, useEffect } from "react";
-import { useHistory } from "react-router-dom";
+import React, { useContext, useEffect } from "react";
 import { CategoryContext } from "./CategoryProvider";
 import { Category } from "./CategoryDetail";
 import { CategoryForm } from "./CategoryForm";
 
 export const CategoryList = () => {
   const { getCategories, categories } = useContext(CategoryContext);
-  const history = useHistory();
 
   useEffect(() => {
     getCategories();
