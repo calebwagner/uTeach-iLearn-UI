@@ -6,24 +6,53 @@ import { PostContext } from "../posts/PostProvider.js";
 import { UserContext } from "../users/UserProviders.js";
 import { ProfileContext } from "./ProfileProvider.js";
 
-export const UserProfile = ({}) => {
-  const { profile, getProfile } = useContext(ProfileContext);
+export const UsersProfileDetail = ({ user }) => {
+  const { profile, getProfile, getProfileById } = useContext(ProfileContext);
   const [addedConnection, setAddedConnection] = useState();
   const { posts, getPosts, getPostById } = useContext(PostContext);
   const { unaddConnection, addConnection, getConnections, connections } =
     useContext(ConnectionContext);
   const { users, getUsers } = useContext(UserContext);
   const { getAuthorById, author } = useContext(AuthorContext);
-  const { authorId } = useParams();
+  const { profileId } = useParams();
+  const history = useHistory();
 
-  const [isConnected, setIsConnected] = useState({});
-
-  //   useEffect(() => {
-  //     getConnections();
-  //   });
+  const [isConnected, setIsConnected] = useState();
 
   useEffect(() => {
-    getAuthorById(authorId);
+    getConnections().then(() => {
+      const foundConnection = connections.find((connected) => {
+        return user.user.id === connected.profile.user.id;
+      });
+      if (foundConnection) {
+        setIsConnected(true);
+      } else {
+        setIsConnected(false);
+      }
+    });
+  }, [isConnected]);
+
+  const addAConnection = () => {
+    addConnection({
+      user: user.user.id,
+      profile: user.id,
+    }).then(() => {
+      history.push("/users");
+    });
+  };
+
+  const foundConnection = connections.find((connected) => {
+    return user.id === connected.profile.user.id;
+  });
+
+  const unaddAConnection = () => {
+    unaddConnection(foundConnection.id).then(() => {
+      history.push("/users");
+    });
+  };
+
+  useEffect(() => {
+    getProfileById(profileId);
   }, []);
 
   return (
@@ -56,12 +85,21 @@ export const UserProfile = ({}) => {
           Connect
         </button>
       )} */}
-      <button
-        className="connect-btn m-8 py-2 px-4 bg-blue-700 text-white font-semibold rounded-lg shadow-md hover:bg-blue-500 focus:outline-none focus:ring-2 focus:ring-green-400 focus:ring-opacity-75"
-        onClick={addConnection}
-      >
-        Connect
-      </button>
+      {isConnected ? (
+        <button
+          className="py-2 px-4 bg-red-700 text-white font-semibold rounded-lg shadow-md hover:bg-red-500 focus:outline-none focus:ring-2 focus:ring-green-400 focus:ring-opacity-75"
+          onClick={unaddAConnection}
+        >
+          Unconnect
+        </button>
+      ) : (
+        <button
+          className="connect-btn m-8 py-2 px-4 bg-blue-700 text-white font-semibold rounded-lg shadow-md hover:bg-blue-500 focus:outline-none focus:ring-2 focus:ring-green-400 focus:ring-opacity-75"
+          onClick={addAConnection}
+        >
+          Connect
+        </button>
+      )}
     </article>
   );
 };

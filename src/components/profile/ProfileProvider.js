@@ -20,7 +20,9 @@ export const ProfileProvider = (props) => {
       headers: {
         Authorization: `Token ${localStorage.getItem("uteachilearn_token")}`,
       },
-    }).then((res) => res.json());
+    })
+      .then((res) => res.json())
+      .then(setProfile);
   };
 
   return (

@@ -15,7 +15,8 @@ import { PostProvider } from "./posts/PostProvider";
 // import { Profile } from "./profile/Profile";
 import { ProfileProvider } from "./profile/ProfileProvider";
 import { ProfileView } from "./profile/ProfileView";
-import { UserProfile } from "./profile/UserProfile";
+// import { UserProfile } from "./profile/UsersProfile";
+import { UsersProfileList } from "./profile/UsersProfileList";
 import { UserList } from "./users/UserList";
 // import { UserProfileList } from "./profile/UserProfileList";
 import { UserProvider } from "./users/UserProviders";
@@ -63,8 +64,8 @@ export const ApplicationViews = () => {
                         <ProfileView />
                       </Route>
 
-                      <Route exact path="/authors/:authorId">
-                        <UserProfile />
+                      <Route exact path="/authors/profile/:profileId">
+                        <UsersProfileList />
                       </Route>
 
                       <Route exact path="/users">
