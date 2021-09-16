@@ -19,15 +19,15 @@ export const MeetingProvider = (props) => {
     return fetch("http://localhost:8000/meetings", {
       method: "POST",
       headers: {
-        Authorization: `Token ${localStorage.getItem("uteachilearn_token")}`,
         "Content-Type": "application/json",
+        Authorization: `Token ${localStorage.getItem("uteachilearn_token")}`,
       },
       body: JSON.stringify(meeting),
-    }).then(setMeetings);
+    }).then(getMeetings);
   };
 
   const deleteMeeting = (meetingId) => {
-    return fetch(`http://localhost:8000/meeting/${meetingId}`, {
+    return fetch(`http://localhost:8000/meetings/${meetingId}`, {
       method: "DELETE",
       headers: {
         Authorization: `Token ${localStorage.getItem("uteachilearn_token")}`,
