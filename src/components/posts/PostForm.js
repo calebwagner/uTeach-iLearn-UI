@@ -1,17 +1,14 @@
 import React, { useContext, useState, useEffect } from "react";
 import { PostContext } from "./PostProvider";
-import { useHistory, useParams } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { CategoryContext } from "../categories/CategoryProvider";
-// import { HumanDate } from "../utils/HumanDate";
 
 export const PostForm = () => {
   const history = useHistory();
   const { posts, createPost, getPosts } = useContext(PostContext);
   const { getCategories, categories } = useContext(CategoryContext);
-  //   const userId = parseInt(localStorage.getItem("uteachilearn_token"));
 
   const [currentPost, setCurrentPost] = useState({
-    // user: userId,
     title: "",
     category: 0,
     created_on: "",
@@ -92,11 +89,9 @@ export const PostForm = () => {
         type="submit"
         className="btn btn-primary"
         onClick={(evt) => {
-          // Prevent form from being submitted
           evt.preventDefault();
           let timestamp = Date.now();
           const post = {
-            // user: userId,
             title: currentPost.title,
             category: parseInt(currentPost?.category),
             created_on: timestamp,
@@ -104,7 +99,6 @@ export const PostForm = () => {
             description: currentPost.description,
           };
 
-          // Send POST request to your API
           createPost(post).then(() => history.push("/"));
         }}
       >

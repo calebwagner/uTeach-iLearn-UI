@@ -4,17 +4,8 @@ export const MessageContext = createContext();
 
 export const MessageProvider = (props) => {
   const [messages, setMessages] = useState([]);
-  //   const [users, setUsers] = useState([]);
 
-  //   const getUsers = () => {
-  //     return fetch("http://localhost:8000/users", {
-  //       headers: {
-  //         Authorization: `Token ${localStorage.getItem("uteachilearn_token")}`,
-  //       },
-  //     })
-  //       .then((res) => res.json())
-  //       .then((data) => setUsers(data));
-  //   };
+  messages.sort((msg1, msg2) => (msg1.timestamp < msg2.timestamp ? 1 : -1));
 
   const getMessages = () => {
     return fetch("http://localhost:8000/messages", {
@@ -62,8 +53,6 @@ export const MessageProvider = (props) => {
         getMessageById,
         sendMessage,
         deleteMessage,
-        // getUsers,
-        // users,
       }}
     >
       {props.children}

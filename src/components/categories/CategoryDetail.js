@@ -1,10 +1,9 @@
 import React, { useContext } from "react";
-import { Link, useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { CategoryContext } from "./CategoryProvider.js";
 
 export const Category = ({ category }) => {
   const { deleteCategory } = useContext(CategoryContext);
-  const history = useHistory();
 
   return (
     <section className="m-8category p-8 max-w-md mx-auto bg-white rounded-xl shadow-md overflow-hidden md:max-w-2xl">

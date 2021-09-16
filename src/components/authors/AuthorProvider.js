@@ -16,16 +16,6 @@ export const AuthorProvider = (props) => {
       .then(setAuthors);
   };
 
-  //   const getAuthorDetails = (authorId) => {
-  //     return fetch(`http://localhost:8000/authors/${authorId}`, {
-  //       headers: {
-  //         Authorization: `Token ${localStorage.getItem("uteachilearn_token")}`,
-  //       },
-  //     })
-  //       .then((res) => res.json())
-  //       .then(setAuthor);
-  //   };
-
   const getAuthorById = (authorId) => {
     return fetch(`http://localhost:8000/authors/${authorId}`, {
       headers: {

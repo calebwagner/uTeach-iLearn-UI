@@ -28,7 +28,7 @@ export const UpdateCategory = () => {
   };
 
   const handleClickUpdateCategory = (event) => {
-    event.preventDefault(); //Prevents the browser from submitting the form
+    event.preventDefault();
     const newCategory = {
       id: currentCategory.id,
       title: currentCategory.title,
