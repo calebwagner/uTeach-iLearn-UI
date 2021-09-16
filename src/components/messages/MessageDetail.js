@@ -2,9 +2,19 @@ import React, { useContext, useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import "tailwindcss/tailwind.css";
 import { MessageContext } from "./MessageProvider";
+import { HumanDate } from "../utils/HumanDate";
 
 export const MessageDetail = ({ message }) => {
   const { messages, getMessages, deleteMessage } = useContext(MessageContext);
+  const [time, setTime] = useState("");
+
+  useEffect(() => {
+    if ("timestamp" in message) {
+      const time = message.timestamp;
+      const converted_time = HumanDate(time);
+      setTime(converted_time);
+    }
+  }, [message]);
 
   return (
     <section className="p-8 max-w-md mx-auto bg-white rounded-xl shadow-md overflow-hidden md:max-w-2xl">
@@ -22,12 +32,12 @@ export const MessageDetail = ({ message }) => {
           <div className="space-y-4">
             <h3 className=""></h3>
             <div className="inline-">
-              Author: {message.user.user.first_name}
+              From: {message.user.user.first_name}
               {message.user.user.last_name}
             </div>
-            <div>Date: {message.timestamp}</div>
+            <div>Message Received on: {time}</div>
             <div>
-              Recipient: {message.recipient.user.id}:
+              Recipient:
               {message.user.user.first_name}
               {message.user.user.last_name}
             </div>

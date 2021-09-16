@@ -1,21 +1,40 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { PostContext } from "./PostProvider";
+
 import "tailwindcss/tailwind.css";
 import "./css/PostDetail.css";
 import { ProfileContext } from "../profile/ProfileProvider";
 import { AuthorContext } from "../authors/AuthorProvider";
+import { HumanDate } from "../utils/HumanDate";
 
 export const PostDetail = ({ post }) => {
-  const { posts, getPosts, deletePost } = useContext(PostContext);
+  const { posts, getPosts, deletePost, getPostById } = useContext(PostContext);
   const { getProfileById, getProfile } = useContext(ProfileContext);
   const { getAuthorById, author, getAuthors } = useContext(AuthorContext);
   const [currentAuthor, setCurrentAuthor] = useState([]);
   const { authorId } = useParams();
+  const { postId } = useParams();
+
+  const [time, setTime] = useState("");
+
+  //   useEffect(() => {
+  //     getPostById(parseInt(authorId)).then((post) => {
+  //       setPost(post);
+  //     });
+  //   }, []);
 
   useEffect(() => {
     getAuthorById(authorId);
   }, []);
+
+  useEffect(() => {
+    if ("created_on" in post) {
+      const time = post.created_on;
+      const converted_time = HumanDate(time);
+      setTime(converted_time);
+    }
+  }, [post]);
 
   return (
     <section className="p-8 max-w-md mx-auto bg-white rounded-xl shadow-md overflow-hidden md:max-w-2xl">
@@ -44,6 +63,7 @@ export const PostDetail = ({ post }) => {
               Author: {post.user.user.first_name} {post.user.user.last_name}
             </div>
             <div>Date: {post.created_on}</div>
+            <div>{time}</div>
           </div>
         </div>
         <div>
