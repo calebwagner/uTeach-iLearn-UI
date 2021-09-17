@@ -1,19 +1,12 @@
 import React, { useContext, useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { PostContext } from "./PostProvider";
-import { AuthorContext } from "../authors/AuthorProvider";
 import { HumanDate } from "../utils/HumanDate";
 import "tailwindcss/tailwind.css";
 
 export const PostDetail = ({ post }) => {
   const { deletePost } = useContext(PostContext);
-  const { getAuthorById } = useContext(AuthorContext);
-  const { authorId } = useParams();
   const [time, setTime] = useState("");
-
-  useEffect(() => {
-    getAuthorById(authorId);
-  }, []);
 
   useEffect(() => {
     if ("created_on" in post) {
@@ -22,7 +15,7 @@ export const PostDetail = ({ post }) => {
       setTime(converted_time);
     }
   }, [post]);
-  console.log(post);
+
   return (
     <section className="p-8 max-w-md mx-auto bg-white rounded-xl shadow-md overflow-hidden md:max-w-2xl">
       <div className="md:flex-shrink-0">

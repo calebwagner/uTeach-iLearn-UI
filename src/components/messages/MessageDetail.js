@@ -30,7 +30,7 @@ export const MessageDetail = ({ message }) => {
             ></img>
           </Link>
           <div className="space-y-4">
-            <h3 className=""></h3>
+            <h3 className="">Title: {message.title}</h3>
             <div className="inline-">
               From: {message.user.user.first_name}
               {message.user.user.last_name}
@@ -38,8 +38,8 @@ export const MessageDetail = ({ message }) => {
             <div>Message Received on: {time}</div>
             <div>
               Recipient:
-              {message.user.user.first_name}
-              {message.user.user.last_name}
+              {message.recipient.user.first_name}
+              {message.recipient.user.last_name}
             </div>
           </div>
         </div>
