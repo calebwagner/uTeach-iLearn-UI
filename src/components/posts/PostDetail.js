@@ -22,14 +22,14 @@ export const PostDetail = ({ post }) => {
       setTime(converted_time);
     }
   }, [post]);
-
+  console.log(post);
   return (
     <section className="p-8 max-w-md mx-auto bg-white rounded-xl shadow-md overflow-hidden md:max-w-2xl">
       <div className="md:flex-shrink-0">
         <div className="flex">
-          <Link to={`/authors/${post.user.user.id}`}>
+          <Link to={`/authors/${post?.user?.user?.id}`}>
             <img
-              className="h-48 w-16 object-scale-down	 md:w-48"
+              className="h-48 w-16 object-scale-dow md:w-48 cursor-auto transition duration-500 ease-in-out  transform hover:-translate-y-2 hover:scale-110"
               //   src={post.user.image_url}
               //   src={require("./images/profilepic.jpg")}
               src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg"
@@ -37,10 +37,10 @@ export const PostDetail = ({ post }) => {
             ></img>
           </Link>
           <div className="space-y-4">
-            <h3 className="">
+            <h3 className="post_title_link cursor-auto transition duration-500 ease-in-out  transform hover:-translate-y-2 hover:scale-110">
               <Link to={`/edit/${post.id}`}>
                 Title: {post.title} ||
-                <div className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">
+                <div className=" inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">
                   {post.category?.title}
                 </div>
               </Link>

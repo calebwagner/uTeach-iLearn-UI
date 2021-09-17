@@ -16,36 +16,44 @@ export const CategoryForm = () => {
   };
 
   return (
-    <form className="message_form bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
-      <h2 className="postForm__title mb-4">Create Category</h2>
+    <form className="message_form justify-center bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+      <h2 className="postForm__title mb-4 font-extrabold text-2xl">
+        Create A Category
+      </h2>
       <fieldset>
         <div className="form-group mb-4">
-          <label htmlFor="name block text-gray-700 text-sm font-bold mb-2">
+          <label htmlFor="name  block text-gray-700 text-sm font-bold mb-2">
             Title of Category:
           </label>
-          <input
-            type="text"
-            name="title"
-            required
-            autoFocus
-            className="form-control shadow appearance-none border rounded  py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-            id="username"
-            placeholder="title ..."
-            value={currentCategory.title}
-            onChange={changeCategoryState}
-          />
+          <div className="form-group mb-4">
+            <input
+              type="text"
+              name="title"
+              required
+              autoFocus
+              className="form-control w-2/3 shadow appearance-none border rounded  py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              id="username"
+              placeholder="title ..."
+              value={currentCategory.title}
+              onChange={changeCategoryState}
+            />
+          </div>
         </div>
         <div className="form-group mb-4">
           <label htmlFor="description">Write your description here:</label>
-          <input
-            type="text"
-            name="description"
-            required
-            autoFocus
-            className="form-control form-control shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-            value={currentCategory.description}
-            onChange={changeCategoryState}
-          ></input>
+          <div>
+            <textarea
+              type="text"
+              name="description"
+              cols={10}
+              rows={5}
+              required
+              autoFocus
+              className="form-control w-2/3 shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              value={currentCategory.description}
+              onChange={changeCategoryState}
+            />
+          </div>
         </div>
       </fieldset>
 
