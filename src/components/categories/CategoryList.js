@@ -1,10 +1,12 @@
-import React, { useContext, useEffect } from "react";
+import React, { useState, useContext, useEffect } from "react";
+import { useHistory } from "react-router-dom";
 import { CategoryContext } from "./CategoryProvider";
 import { Category } from "./CategoryDetail";
 import { CategoryForm } from "./CategoryForm";
 
 export const CategoryList = () => {
   const { getCategories, categories } = useContext(CategoryContext);
+  const history = useHistory();
 
   useEffect(() => {
     getCategories();
@@ -12,8 +14,8 @@ export const CategoryList = () => {
 
   return (
     <>
-      <div className="categories_list space-y-6 pb-8">
-        <div lassName="float-right w-1/4 sticky top-0 z-50 col-span-3 ">
+      <div className="categories_list space-y-6 m-8category p-8  mx-auto  rounded-xl shadow-md overflow-hidden md:max-w-2xl m-0">
+        <div className="">
           <CategoryForm />
         </div>
         {categories.map((category) => (

@@ -5,15 +5,15 @@ export const Meetings = ({ meeting }) => {
   const { deleteMeeting } = useContext(MeetingContext);
 
   return (
-    <section className="m-8category p-8 max-w-md mx-auto bg-white rounded-xl shadow-md overflow-hidden md:max-w-2xl">
+    <section className="m-8 category p-8 max-w-md mx-auto bg-white rounded-xl shadow-md overflow-hidden md:max-w-2xl">
       <div className="md:flex-shrink-0 ">
         <h1>Scheduled Meeting</h1>
         <h1>
-          Meeting with: {meeting.connection.user.user.first_name}
-          {meeting.connection.user.user.last_name}
+          Meeting with: {meeting.connection.profile.user.first_name}
+          {meeting.connection.profile.user.last_name}
         </h1>
         <div>Description: {meeting.description}</div>
-        <div>Contact: {meeting.connection.user.user.email}</div>
+        <div>Contact: {meeting.connection.profile.user.email}</div>
         <div>Date: {meeting.scheduled_date}</div>
         <button
           className="py-2 px-4 bg-red-700 text-white font-semibold rounded-lg shadow-md hover:bg-red-500 focus:outline-none focus:ring-2 focus:ring-green-400 focus:ring-opacity-75"

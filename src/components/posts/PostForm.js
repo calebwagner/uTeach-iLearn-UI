@@ -27,7 +27,7 @@ export const PostForm = () => {
   };
 
   return (
-    <form className="postForm">
+    <form className="postForm justify-center bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
       <h2 className="postForm__title">Create Post</h2>
       <fieldset>
         <div className="form-group">
@@ -37,7 +37,7 @@ export const PostForm = () => {
             name="title"
             required
             autoFocus
-            className="form-control"
+            className="form-control form-control w-2/3 shadow appearance-none border rounded  py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             value={currentPost.title}
             onChange={changePostState}
           />
@@ -48,7 +48,7 @@ export const PostForm = () => {
             value={currentPost.category}
             name="category"
             id="category"
-            className="form-control"
+            className="form-control form-control w-2/3 shadow appearance-none border rounded  py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             onChange={changePostState}
           >
             <option value="0">Select article category</option>
@@ -66,7 +66,7 @@ export const PostForm = () => {
             name="image"
             required
             autoFocus
-            className="form-control"
+            className="form-control form-control w-2/3 shadow appearance-none border rounded  py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             value={currentPost.image}
             onChange={changePostState}
           ></input>
@@ -78,7 +78,7 @@ export const PostForm = () => {
             name="description"
             required
             autoFocus
-            className="form-control"
+            className="form-control form-control w-2/3 shadow appearance-none border rounded  py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             value={currentPost.description}
             onChange={changePostState}
           ></input>
@@ -87,7 +87,7 @@ export const PostForm = () => {
 
       <button
         type="submit"
-        className="btn btn-primary"
+        className="create_btn m-8 py-2 px-4 bg-blue-700 text-white font-semibold rounded-lg shadow-md hover:bg-blue-500 focus:outline-none focus:ring-2 focus:ring-green-400 focus:ring-opacity-75"
         onClick={(evt) => {
           evt.preventDefault();
           let timestamp = Date.now();
@@ -104,7 +104,10 @@ export const PostForm = () => {
       >
         Create
       </button>
-      <button className="btn btn-primary" onClick={() => history.push("/")}>
+      <button
+        className="cancel_post py-2 px-4 bg-red-700 text-white font-semibold rounded-lg shadow-md hover:bg-red-500 focus:outline-none focus:ring-2 focus:ring-green-400 focus:ring-opacity-75"
+        onClick={() => history.push("/")}
+      >
         Cancel
       </button>
     </form>

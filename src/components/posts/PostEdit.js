@@ -11,10 +11,7 @@ export const UpdatePost = () => {
 
   const history = useHistory();
 
-  const currentUserId = parseInt(localStorage.getItem("uteachilearn_token"));
-
   const [currentPost, setCurrentPost] = useState({
-    user: currentUserId,
     title: "",
     category: 0,
     created_on: "",
@@ -23,8 +20,19 @@ export const UpdatePost = () => {
   });
 
   useEffect(() => {
-    getPostById(parseInt(postId)).then(setCurrentPost);
-  }, []);
+    getPostById(parseInt(postId)).then(
+      (
+        post // I need the current values of the post I want to edit
+      ) =>
+        setCurrentPost({
+          title: post.title,
+          category: post.category.id, // parseInt(currentPost.category) was getting whole object but I needed just the ID
+          created_on: post.created_on,
+          image: post.image,
+          description: post.description,
+        })
+    );
+  }, [postId]);
 
   useEffect(() => {
     getCategories();
@@ -39,9 +47,9 @@ export const UpdatePost = () => {
   const handleClickUpdatePost = (event) => {
     event.preventDefault();
     const newPost = {
-      id: currentPost.id,
+      id: postId,
       title: currentPost.title,
-      category: parseInt(currentPost.category),
+      category: currentPost.category,
       created_on: currentPost.created_on,
       image: currentPost.image,
       description: currentPost.description,
@@ -50,17 +58,21 @@ export const UpdatePost = () => {
   };
 
   return (
-    <form className="notebookForm">
-      <h2 className="notebookForm__title">Edit Post</h2>
+    <form className="notebookForm justify-center bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+      <h2 className="notebookForm__title mb-4 font-extrabold text-2xl">
+        Edit Post
+      </h2>
       <fieldset>
         <div className="form-group">
-          <label htmlFor="name">Title of post: </label>
+          <label htmlFor="name block text-gray-700 text-sm font-bold mb-2">
+            Title of post:
+          </label>
           <input
             type="text"
             name="title"
             required
             autoFocus
-            className="form-control"
+            className="form-control w-2/3 shadow appearance-none border rounded  py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             value={currentPost.title}
             onChange={changePostState}
           />
@@ -71,7 +83,7 @@ export const UpdatePost = () => {
             value={currentPost.category}
             name="category"
             id="category"
-            className="form-control"
+            className="form-control w-2/3 shadow appearance-none border rounded  py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             onChange={changePostState}
           >
             <option value="0">Select article category</option>
@@ -89,7 +101,7 @@ export const UpdatePost = () => {
             name="image"
             required
             autoFocus
-            className="form-control"
+            className="form-control w-2/3 shadow appearance-none border rounded  py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             value={currentPost.image}
             onChange={changePostState}
           ></input>
@@ -101,17 +113,23 @@ export const UpdatePost = () => {
             name="description"
             required
             autoFocus
-            className="form-control"
+            className="form-control w-2/3 shadow appearance-none border rounded  py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             value={currentPost.description}
             onChange={changePostState}
           ></input>
         </div>
       </fieldset>
 
-      <button className="btn btn-primary" onClick={handleClickUpdatePost}>
+      <button
+        className="edit_post_btn m-8 py-2 px-4 bg-blue-700 text-white font-semibold rounded-lg shadow-md hover:bg-blue-500 focus:outline-none focus:ring-2 focus:ring-green-400 focus:ring-opacity-75"
+        onClick={handleClickUpdatePost}
+      >
         Save
       </button>
-      <button className="btn btn-primary" onClick={() => history.push("/")}>
+      <button
+        className="cancel_post py-2 px-4 bg-red-700 text-white font-semibold rounded-lg shadow-md hover:bg-red-500 focus:outline-none focus:ring-2 focus:ring-green-400 focus:ring-opacity-75"
+        onClick={() => history.push("/")}
+      >
         Cancel
       </button>
     </form>
