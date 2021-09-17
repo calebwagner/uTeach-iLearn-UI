@@ -25,13 +25,17 @@ export const MessageForm = () => {
   };
 
   return (
-    <form className="message_form bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
-      <h2 className="postForm__title mb-4">Create Message</h2>
+    <form className="message_form bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 mt-6">
+      <h2 className="postForm__title mb-4 block  text-sm font-bold text-gray-700">
+        Create Message
+      </h2>
       <fieldset>
-        <div className="form-group mb-4">
-          <label htmlFor="name block text-gray-700 text-sm font-bold mb-2">
-            Title of Message:
-          </label>
+        <div className="form-group mb-2 block text-sm font-bold text-gray-700">
+          <div>
+            <label htmlFor="name block text-gray-700 text-sm font-bold mb-2 ">
+              Title of Message:
+            </label>
+          </div>
           <input
             type="text"
             name="title"
@@ -44,9 +48,11 @@ export const MessageForm = () => {
             onChange={changeMessageState}
           />
         </div>
-        <div className="form-group mb-4">
-          <label htmlFor="description">Write your description here:</label>
-          <input
+        <div className="form-group mb-2 block text-sm font-bold text-gray-700">
+          <div>
+            <label htmlFor="description">Write your description here:</label>
+          </div>
+          <textarea
             type="text"
             name="description"
             required
@@ -54,10 +60,12 @@ export const MessageForm = () => {
             className="form-control form-control shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             value={currentMessage.description}
             onChange={changeMessageState}
-          ></input>
+          />
         </div>
-        <div className="form-group mb-4">
-          <label htmlFor="post_category">Users:</label>
+        <div className="form-group mb-2 block text-sm font-bold text-gray-700">
+          <div>
+            <label htmlFor="post_category">Users:</label>
+          </div>
           <select
             value={currentMessage.recipient}
             name="recipient"
@@ -77,7 +85,7 @@ export const MessageForm = () => {
 
       <button
         type="submit"
-        className="m-8 py-2 px-4 bg-blue-700 text-white font-semibold rounded-lg shadow-md hover:bg-blue-500 focus:outline-none focus:ring-2 focus:ring-green-400 focus:ring-opacity-75"
+        className=" py-2 px-4 bg-blue-700 text-white font-semibold rounded-lg shadow-md hover:bg-blue-500 focus:outline-none focus:ring-2 focus:ring-green-400 focus:ring-opacity-75"
         onClick={(evt) => {
           evt.preventDefault();
           let timestamp = Date.now();

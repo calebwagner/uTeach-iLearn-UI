@@ -9,7 +9,7 @@ export const Profile = () => {
   }, []);
 
   return (
-    <article className="profile p-8 max-w-md mx-auto bg-white rounded-xl shadow-md overflow-hidden md:max-w-2xl">
+    <article className="profile p-8 max-w-md mx-auto bg-white rounded-xl shadow-md overflow-hidden md:max-w-2xl mt-12">
       <header>
         <h1>Your Profile</h1>
       </header>

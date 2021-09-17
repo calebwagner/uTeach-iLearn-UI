@@ -12,7 +12,7 @@ export const MessageList = () => {
   }, []);
 
   return (
-    <section className="space-y-6 pb-8 static ">
+    <section className="space-y-6 pb-8 static mt-12">
       <div className="float-right w-1/4 fixed top-0 right-0 z-50 col-span-3 m-6">
         <MessageForm />
       </div>

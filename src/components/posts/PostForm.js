@@ -27,11 +27,15 @@ export const PostForm = () => {
   };
 
   return (
-    <form className="postForm justify-center bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
-      <h2 className="postForm__title">Create Post</h2>
+    <form className="postForm mt-12 bg-white px-8 pt-6 pb-8 mb-4 space-y-6 m-8category p-8  mx-auto  rounded-xl shadow-md overflow-hidden md:max-w-2xl m-0">
+      <h2 className="postForm__title block mb-2 text-sm font-bold text-gray-700">
+        Create Post
+      </h2>
       <fieldset>
-        <div className="form-group">
-          <label htmlFor="name">Title of post: </label>
+        <div className="form-group block mb-2 text-sm font-bold text-gray-700">
+          <div className="block mb-2 text-sm font-bold text-gray-700">
+            <label htmlFor="name ">Title of post:</label>
+          </div>
           <input
             type="text"
             name="title"
@@ -42,8 +46,10 @@ export const PostForm = () => {
             onChange={changePostState}
           />
         </div>
-        <div className="form-group">
-          <label htmlFor="post_category">Category:</label>
+        <div className="form-group block mb-2 text-sm font-bold text-gray-700">
+          <div className="block mb-2 text-sm font-bold text-gray-700">
+            <label htmlFor="post_category">Category:</label>
+          </div>
           <select
             value={currentPost.category}
             name="category"
@@ -59,20 +65,22 @@ export const PostForm = () => {
             ))}
           </select>
         </div>
-        <div className="form-group">
+        <div className="form-group block mb-2 text-sm font-bold text-gray-700">
           <label htmlFor="maker">Insert Image URL:</label>
           <input
             type="text"
             name="image"
             required
             autoFocus
-            className="form-control form-control w-2/3 shadow appearance-none border rounded  py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            className="form-control block mb-2 text-sm font-bold text-gray-700 form-control w-2/3 shadow appearance-none border rounded  py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             value={currentPost.image}
             onChange={changePostState}
           ></input>
         </div>
         <div className="form-group">
-          <label htmlFor="description">Write your description here:</label>
+          <div className="block mb-2 text-sm font-bold text-gray-700">
+            <label htmlFor="description">Write your description here:</label>
+          </div>
           <input
             type="text"
             name="description"

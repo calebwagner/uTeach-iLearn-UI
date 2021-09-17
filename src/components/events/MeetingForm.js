@@ -24,7 +24,7 @@ export const MeetingForm = () => {
   };
 
   return (
-    <form className="message_form bg-white shadow-md rounded">
+    <form className="message_form bg-white shadow-md rounded p-4">
       <h2 className="postForm__title mb-4">Schedule Meeting</h2>
       <fieldset>
         <div className="form-group mb-4">
