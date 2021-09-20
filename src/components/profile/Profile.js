@@ -1,4 +1,5 @@
 import React, { useEffect, useContext } from "react";
+import { SavedPostList } from "../posts/SavedPostList.js";
 import { ProfileContext } from "./ProfileProvider.js";
 
 export const Profile = () => {
@@ -30,6 +31,7 @@ export const Profile = () => {
         </div>
         <div className="profile__bio">About you: {profile?.app_user?.bio}</div>
       </section>
+      <SavedPostList />
     </article>
   );
 };
