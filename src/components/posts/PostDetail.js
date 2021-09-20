@@ -1,11 +1,52 @@
 import React, { useContext, useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { PostContext } from "./PostProvider";
 import { HumanDate } from "../utils/HumanDate";
 import "tailwindcss/tailwind.css";
+import { SavedPostContext } from "./SavedPostsProvider";
 
 export const PostDetail = ({ post }) => {
   const { deletePost } = useContext(PostContext);
+  const { savePost, unsavePost, getSavedPosts, savedPosts } =
+    useContext(SavedPostContext);
+  const history = useHistory();
+
+  const [postIsSaved, setPostIsSaved] = useState();
+
+  useEffect(() => {
+    getSavedPosts().then(() => {
+      const foundSavedPost = savedPosts.find((savedPost) => {
+        return post?.id === savedPost.post.id;
+      });
+      if (foundSavedPost) {
+        setPostIsSaved(true);
+      } else {
+        setPostIsSaved(false);
+      }
+    });
+  }, [postIsSaved]);
+
+  const SaveThePost = () => {
+    savePost({
+      user: post.user.user.id,
+      post: post.id,
+    }).then(() => {
+      history.push("/");
+    });
+  };
+
+  //   console.log(savedPost?.post);
+
+  const foundSavedPost = savedPosts.find((savedPost) => {
+    return post?.id === savedPost?.post.id;
+  });
+
+  const unsaveThePost = () => {
+    unsavePost(foundSavedPost.id).then(() => {
+      history.push("/");
+    });
+  };
+
   const [time, setTime] = useState("");
 
   useEffect(() => {
@@ -15,6 +56,10 @@ export const PostDetail = ({ post }) => {
       setTime(converted_time);
     }
   }, [post]);
+
+  //   console.log("HERE!!!!!");
+
+  //   console.log(post?.user?.user?.id);
 
   return (
     <section className="p-8 max-w-md mx-auto bg-white rounded-xl shadow-md overflow-hidden md:max-w-2xl">
@@ -54,9 +99,21 @@ export const PostDetail = ({ post }) => {
         />
 
         <div className="flex items-center justify-center">
-          <button className="m-8 py-2 px-4 bg-blue-700 text-white font-semibold rounded-lg shadow-md hover:bg-blue-500 focus:outline-none focus:ring-2 focus:ring-green-400 focus:ring-opacity-75">
-            Save
-          </button>
+          {postIsSaved ? (
+            <button
+              className="py-2 px-4 bg-red-700 text-white font-semibold rounded-lg shadow-md hover:bg-red-500 focus:outline-none focus:ring-2 focus:ring-green-400 focus:ring-opacity-75"
+              onClick={unsaveThePost}
+            >
+              Unsave
+            </button>
+          ) : (
+            <button
+              className="connect-btn m-8 py-2 px-4 bg-blue-700 text-white font-semibold rounded-lg shadow-md hover:bg-blue-500 focus:outline-none focus:ring-2 focus:ring-green-400 focus:ring-opacity-75"
+              onClick={SaveThePost}
+            >
+              Save
+            </button>
+          )}
           <button
             className="py-2 px-4 bg-red-700 text-white font-semibold rounded-lg shadow-md hover:bg-red-500 focus:outline-none focus:ring-2 focus:ring-green-400 focus:ring-opacity-75"
             onClick={() => deletePost(post.id)}

@@ -12,6 +12,7 @@ import { UpdatePost } from "./posts/PostEdit";
 import { PostForm } from "./posts/PostForm";
 import { PostList } from "./posts/PostList";
 import { PostProvider } from "./posts/PostProvider";
+import { SavedPostProvider } from "./posts/SavedPostsProvider";
 // import { Profile } from "./profile/Profile";
 import { ProfileProvider } from "./profile/ProfileProvider";
 import { ProfileView } from "./profile/ProfileView";
@@ -33,49 +34,51 @@ export const ApplicationViews = () => {
                 <ConnectionProvider>
                   <MeetingProvider>
                     <AuthorProvider>
-                      <Route exact path="/create">
-                        <PostForm />
-                      </Route>
+                      <SavedPostProvider>
+                        <Route exact path="/create">
+                          <PostForm />
+                        </Route>
 
-                      <Route exact path="/edit/:postId">
-                        <UpdatePost />
-                      </Route>
+                        <Route exact path="/edit/:postId">
+                          <UpdatePost />
+                        </Route>
 
-                      <Route exact path="/">
-                        <PostList />
-                      </Route>
+                        <Route exact path="/">
+                          <PostList />
+                        </Route>
 
-                      <Route exact path="/messages">
-                        <MessageList />
-                      </Route>
+                        <Route exact path="/messages">
+                          <MessageList />
+                        </Route>
 
-                      <Route exact path="/categories">
-                        <CategoryList />
-                      </Route>
+                        <Route exact path="/categories">
+                          <CategoryList />
+                        </Route>
 
-                      <Route exact path="/categories/edit/:categoryId">
-                        <UpdateCategory />
-                      </Route>
+                        <Route exact path="/categories/edit/:categoryId">
+                          <UpdateCategory />
+                        </Route>
 
-                      {/* <Route exact path="/userprofile/:profileId">
+                        {/* <Route exact path="/userprofile/:profileId">
                         <UserProfile />
                       </Route> */}
 
-                      <Route exact path="/profile">
-                        <ProfileView />
-                      </Route>
+                        <Route exact path="/profile">
+                          <ProfileView />
+                        </Route>
 
-                      {/* <Route exact path="/authors/:authorId">
+                        {/* <Route exact path="/authors/:authorId">
                         <UsersProfileList />
                       </Route> */}
 
-                      <Route exact path="/authors/:authorId">
-                        <UsersProfileDetail />
-                      </Route>
+                        <Route exact path="/authors/:authorId">
+                          <UsersProfileDetail />
+                        </Route>
 
-                      <Route exact path="/users">
-                        <UserList />
-                      </Route>
+                        <Route exact path="/users">
+                          <UserList />
+                        </Route>
+                      </SavedPostProvider>
                     </AuthorProvider>
                   </MeetingProvider>
                 </ConnectionProvider>
