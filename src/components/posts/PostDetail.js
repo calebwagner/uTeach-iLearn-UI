@@ -57,6 +57,10 @@ export const PostDetail = ({ post }) => {
     }
   }, [post]);
 
+  //   console.log("HERE!!!!!");
+
+  //   console.log(post?.user?.user?.id);
+
   return (
     <section className="p-8 max-w-md mx-auto bg-white rounded-xl shadow-md overflow-hidden md:max-w-2xl">
       <div className="md:flex-shrink-0">

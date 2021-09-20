@@ -13,7 +13,6 @@ export const SavedPostDetail = ({ savedPost }) => {
   const { getPosts, posts } = useContext(PostContext);
   const { getAuthorById, author } = useContext(AuthorContext);
   const { authorId } = useParams();
-  const parsedIntAuthorId = parseInt(authorId);
 
   //   useEffect(() => {
   //     getAuthorById(parsedIntAuthorId);
@@ -21,36 +20,45 @@ export const SavedPostDetail = ({ savedPost }) => {
 
   const history = useHistory();
 
-  const [postIsSaved, setPostIsSaved] = useState();
+  // const [postIsSaved, setPostIsSaved] = useState();
 
   useEffect(() => {
-    getPosts().then(() => {
-      const foundSavedPost = posts.find((post) => {
-        return post?.id === savedPost?.post?.id;
-      });
-      if (foundSavedPost) {
-        setPostIsSaved(true);
-      } else {
-        setPostIsSaved(false);
-      }
-    });
-  }, [postIsSaved]);
+    getPosts();
+  }, []);
 
-  const SaveThePost = () => {
-    savePost({
-      user: savePost.user.user.id,
-      post: posts.id,
-    }).then(() => {
-      history.push("/profile");
-    });
-  };
+  // useEffect(() => {
+  //   getPosts();
+  //   getSavedPosts().then(() => {
+  //     const foundSavedPost = posts.find((post) => {
+  //       return post?.id === savedPost?.post?.post?.id;
+  //     });
+  //     if (foundSavedPost) {
+  //       setPostIsSaved(true);
+  //     } else {
+  //       setPostIsSaved(false);
+  //     }
+  //   });
+  // }, [postIsSaved]);
 
-  const foundSavedPost = posts.find((post) => {
-    return post.id === savedPost?.post?.id;
-  });
+  // const SaveThePost = () => {
+  //   savePost({
+  //     user: posts?.user?.user?.id,
+  //     post: posts?.id,
+  //   }).then(() => {
+  //     history.push("/profile");
+  //   });
+  // };
+
+  console.log("HERE!!!!!");
+
+  console.log(savedPost?.post?.post?.id);
+
+  // const foundSavedPost = posts.find((post) => {
+  //   return post.id === savedPost?.id;
+  // });
 
   const unsaveThePost = () => {
-    unsavePost(foundSavedPost.id).then(() => {
+    unsavePost(savedPost.id).then(() => {
       history.push("/profile");
     });
   };
@@ -104,22 +112,12 @@ export const SavedPostDetail = ({ savedPost }) => {
           src="https://www.aihr.com/wp-content/uploads/Learning-and-development.png"
           alt="picture"
         />
-
-        {postIsSaved ? (
-          <button
-            className="py-2 px-4 bg-red-700 text-white font-semibold rounded-lg shadow-md hover:bg-red-500 focus:outline-none focus:ring-2 focus:ring-green-400 focus:ring-opacity-75"
-            onClick={unsaveThePost}
-          >
-            Unsave
-          </button>
-        ) : (
-          <button
-            className="connect-btn m-8 py-2 px-4 bg-blue-700 text-white font-semibold rounded-lg shadow-md hover:bg-blue-500 focus:outline-none focus:ring-2 focus:ring-green-400 focus:ring-opacity-75"
-            onClick={SaveThePost}
-          >
-            Save
-          </button>
-        )}
+        <button
+          className="py-2 px-4 bg-red-700 text-white font-semibold rounded-lg shadow-md hover:bg-red-500 focus:outline-none focus:ring-2 focus:ring-green-400 focus:ring-opacity-75"
+          onClick={unsaveThePost}
+        >
+          Unsave
+        </button>
       </div>
     </section>
   );
