@@ -45,6 +45,17 @@ export const MessageProvider = (props) => {
     }).then(getMessages);
   };
 
+  const updateMessage = (message) => {
+    return fetch(`http://localhost:8000/messages/${message.id}`, {
+      method: "PUT",
+      headers: {
+        Authorization: `Token ${localStorage.getItem("uteachilearn_token")}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(message),
+    }).then(getMessages);
+  };
+
   return (
     <MessageContext.Provider
       value={{
@@ -53,6 +64,7 @@ export const MessageProvider = (props) => {
         getMessageById,
         sendMessage,
         deleteMessage,
+        updateMessage,
       }}
     >
       {props.children}
