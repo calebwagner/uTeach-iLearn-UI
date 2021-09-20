@@ -94,7 +94,6 @@ export const MessageForm = () => {
             description: currentMessage.description,
             recipient: parseInt(currentMessage.recipient),
             read: currentMessage.read,
-            // read: false,
             timestamp: timestamp,
           };
 

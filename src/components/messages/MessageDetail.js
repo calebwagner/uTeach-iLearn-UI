@@ -1,11 +1,11 @@
 import React, { useContext, useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import "tailwindcss/tailwind.css";
 import { MessageContext } from "./MessageProvider";
 import { HumanDate } from "../utils/HumanDate";
 
 export const MessageDetail = ({ message }) => {
-  const { deleteMessage } = useContext(MessageContext);
+  const { deleteMessage, updateMessage } = useContext(MessageContext);
   const [time, setTime] = useState("");
 
   useEffect(() => {
@@ -15,6 +15,30 @@ export const MessageDetail = ({ message }) => {
       setTime(converted_time);
     }
   }, [message]);
+
+  const setMessageToRead = () => {
+    updateMessage({
+      id: message.id,
+      title: message.title,
+      description: message.description,
+      timestamp: message.timestamp,
+      read: true,
+      recipient: message.recipient.user.id,
+      user: message.user.user.id,
+    });
+  };
+
+  const setMessageToUnread = () => {
+    updateMessage({
+      id: message.id,
+      title: message.title,
+      description: message.description,
+      timestamp: message.timestamp,
+      read: false,
+      recipient: message.recipient.user.id,
+      user: message.user.user.id,
+    });
+  };
 
   return (
     <section className="p-8 max-w-md mx-auto bg-white rounded-xl shadow-md overflow-hidden md:max-w-2xl">
@@ -47,9 +71,21 @@ export const MessageDetail = ({ message }) => {
           <h5>Description: {message.description}</h5>
         </div>
         <div className="flex items-center justify-center">
-          <button className="m-8 py-2 px-4 bg-blue-700 text-white font-semibold rounded-lg shadow-md hover:bg-blue-500 focus:outline-none focus:ring-2 focus:ring-green-400 focus:ring-opacity-75">
-            Read
-          </button>
+          {message.read ? (
+            <button
+              className=" m-8 py-2 px-4 bg-red-700 text-white font-semibold rounded-lg shadow-md hover:bg-red-500 focus:outline-none focus:ring-2 focus:ring-green-400 focus:ring-opacity-75"
+              onClick={setMessageToUnread}
+            >
+              Unread
+            </button>
+          ) : (
+            <button
+              className="connect-btn m-8 py-2 px-4 bg-blue-700 text-white font-semibold rounded-lg shadow-md hover:bg-blue-500 focus:outline-none focus:ring-2 focus:ring-green-400 focus:ring-opacity-75"
+              onClick={setMessageToRead}
+            >
+              Read
+            </button>
+          )}
           <button
             className="py-2 px-4 bg-red-700 text-white font-semibold rounded-lg shadow-md hover:bg-red-500 focus:outline-none focus:ring-2 focus:ring-green-400 focus:ring-opacity-75"
             onClick={() => deleteMessage(message.id)}
