@@ -26,7 +26,7 @@ export const SavedPostProvider = (props) => {
     }).then(getSavedPosts);
   };
 
-  const unSavePost = (savedPostId) => {
+  const unsavePost = (savedPostId) => {
     return fetch(`http://localhost:8000/savedposts/${savedPostId}`, {
       method: "DELETE",
       headers: {
@@ -37,7 +37,7 @@ export const SavedPostProvider = (props) => {
 
   return (
     <SavedPostContext.Provider
-      value={{ savedPosts, getSavedPosts, savePost, unSavePost }}
+      value={{ savedPosts, getSavedPosts, savePost, unsavePost }}
     >
       {props.children}
     </SavedPostContext.Provider>

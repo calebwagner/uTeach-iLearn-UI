@@ -7,7 +7,7 @@ import { SavedPostContext } from "./SavedPostsProvider";
 
 export const PostDetail = ({ post }) => {
   const { deletePost } = useContext(PostContext);
-  const { savePost, unSavePost, getSavedPosts, savedPosts } =
+  const { savePost, unsavePost, getSavedPosts, savedPosts } =
     useContext(SavedPostContext);
   const history = useHistory();
 
@@ -35,12 +35,14 @@ export const PostDetail = ({ post }) => {
     });
   };
 
+  //   console.log(savedPost?.post);
+
   const foundSavedPost = savedPosts.find((savedPost) => {
-    return post?.id === savedPost?.user?.user?.id;
+    return post?.id === savedPost?.post.id;
   });
 
   const unsaveThePost = () => {
-    unSavePost(foundSavedPost.id).then(() => {
+    unsavePost(foundSavedPost.id).then(() => {
       history.push("/");
     });
   };
