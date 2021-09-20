@@ -68,13 +68,15 @@ export const UserDetail = ({ user }) => {
         <div className="profile__username">
           Username: {user?.user?.username}
         </div>
-        <Link to={`/authors/${user.id}`} className="">
-          profile link
-        </Link>
+        <button className="connect-btn m-8 py-2 px-4 bg-green-500 text-white font-semibold rounded-lg shadow-md hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-400 focus:ring-opacity-75">
+          <Link to={`/authors/${user.id}`} className="">
+            profile link
+          </Link>
+        </button>
         {/* <div className="profile__bio">About: {user?.user?.bio}</div> */}
         {isConnected ? (
           <button
-            className="py-2 px-4 bg-red-700 text-white font-semibold rounded-lg shadow-md hover:bg-red-500 focus:outline-none focus:ring-2 focus:ring-green-400 focus:ring-opacity-75"
+            className="m-8 py-2 px-4 bg-red-700 text-white font-semibold rounded-lg shadow-md hover:bg-red-500 focus:outline-none focus:ring-2 focus:ring-green-400 focus:ring-opacity-75"
             onClick={unaddAConnection}
           >
             Unconnect
