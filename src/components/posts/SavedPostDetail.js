@@ -38,10 +38,10 @@ export const SavedPostDetail = ({ savedPost }) => {
       <div className="md:flex-shrink-0">
         <div className="flex">
           <img
-            className="h-48 w-16 object-scale-dow md:w-48 cursor-auto hover:-translate-y-2 hover:scale-110"
-            //   src={post.user.image_url}
+            className="inline object-cover w-24 h-24 mr-2 rounded-full"
+            src={savedPost.post.user.image_url}
             //   src={require("./images/profilepic.jpg")}
-            src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg"
+            // src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg"
             alt="profile picture"
           ></img>
           {/* </Link> */}

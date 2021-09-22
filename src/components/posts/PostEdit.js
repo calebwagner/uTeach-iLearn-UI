@@ -15,7 +15,7 @@ export const UpdatePost = () => {
     title: "",
     category: 0,
     created_on: "",
-    image: "",
+    // image: "",
     description: "",
   });
 
@@ -28,7 +28,7 @@ export const UpdatePost = () => {
           title: post.title,
           category: post.category.id, // parseInt(currentPost.category) was getting whole object but I needed just the ID
           created_on: post.created_on,
-          image: post.image,
+          // image: post.image,
           description: post.description,
         })
     );
@@ -51,7 +51,7 @@ export const UpdatePost = () => {
       title: currentPost.title,
       category: currentPost.category,
       created_on: currentPost.created_on,
-      image: currentPost.image,
+      // image: currentPost.image,
       description: currentPost.description,
     };
     updatePost(newPost).then(() => history.push("/"));
@@ -98,7 +98,7 @@ export const UpdatePost = () => {
             ))}
           </select>
         </div>
-        <div className="form-group mb-4">
+        {/* <div className="form-group mb-4">
           <div className="form-group block mb-2 text-sm font-bold text-gray-700">
             <label htmlFor="maker block mb-2 text-sm font-bold text-gray-700">
               Insert Image URL:
@@ -113,7 +113,7 @@ export const UpdatePost = () => {
             value={currentPost.image}
             onChange={changePostState}
           ></input>
-        </div>
+        </div> */}
         <div className="form-group mb-4">
           <div className="form-group block mb-2 text-sm font-bold text-gray-700">
             <label htmlFor="description block mb-2 text-sm font-bold text-gray-700">

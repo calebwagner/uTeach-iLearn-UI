@@ -12,7 +12,7 @@ export const PostForm = () => {
     title: "",
     category: 0,
     created_on: "",
-    image: "",
+    // image: "",
     description: "",
   });
 
@@ -70,7 +70,7 @@ export const PostForm = () => {
             ))}
           </select>
         </div>
-        <div className="form-group block mb-2 text-sm font-bold text-gray-700">
+        {/* <div className="form-group block mb-2 text-sm font-bold text-gray-700">
           <label htmlFor="maker">Insert Image URL:</label>
           <input
             type="text"
@@ -81,7 +81,7 @@ export const PostForm = () => {
             value={currentPost.image}
             onChange={changePostState}
           ></input>
-        </div>
+        </div> */}
         <div className="form-group">
           <div className="block mb-2 text-sm font-bold text-gray-700">
             <label htmlFor="description">Write your description here:</label>
@@ -110,7 +110,7 @@ export const PostForm = () => {
             title: currentPost.title,
             category: parseInt(currentPost?.category),
             created_on: timestamp,
-            image: currentPost.image,
+            // image: currentPost.image,
             description: currentPost.description,
           };
 

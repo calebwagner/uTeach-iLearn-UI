@@ -13,11 +13,12 @@ export const ConnectionDetail = ({ connection }) => {
         {/* <div>{connection.user.image_url}</div> */}
 
         <img
-          className="rounded-full mr-6 object-scale-dow md:w-12 cursor-auto transition duration-500 ease-in-out  transform hover:-translate-y-2 hover:scale-110"
-          src="https://t4.ftcdn.net/jpg/00/64/67/63/360_F_64676383_LdbmhiNM6Ypzb3FM4PPuFP9rHe7ri8Ju.jpg"
-          alt="profile picture"
+          className="inline object-cover w-12 h-12 mr-2 rounded-full"
+          src={connection.profile.image_url}
+          //   src="https://t4.ftcdn.net/jpg/00/64/67/63/360_F_64676383_LdbmhiNM6Ypzb3FM4PPuFP9rHe7ri8Ju.jpg"
+          alt="profile"
         ></img>
-        <div>
+        <div className="text-lg font-bold">
           {connection.profile.user.first_name}{" "}
           {connection.profile.user.last_name}
         </div>

@@ -61,11 +61,11 @@ export const PostDetail = ({ post }) => {
         <div className="flex space-y-4">
           <Link to={`/authors/${post?.user?.user?.id}`}>
             <img
-              className="rounded-full mr-6 object-scale-dow md:w-24 cursor-auto transition duration-500 ease-in-out  transform hover:-translate-y-2 hover:scale-110"
-              //   src={post.user.image_url}
+              className="inline object-cover w-24 h-24 mr-2 rounded-full cursor-auto transition duration-500 ease-in-out  transform hover:-translate-y-2 hover:scale-110"
+              src={post.user.image_url}
               //   src={require("./images/profilepic.jpg")}
               //   src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg"
-              src="https://t4.ftcdn.net/jpg/00/64/67/63/360_F_64676383_LdbmhiNM6Ypzb3FM4PPuFP9rHe7ri8Ju.jpg"
+              //   src="https://t4.ftcdn.net/jpg/00/64/67/63/360_F_64676383_LdbmhiNM6Ypzb3FM4PPuFP9rHe7ri8Ju.jpg"
               alt="profile picture"
             ></img>
           </Link>
