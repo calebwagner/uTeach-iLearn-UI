@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useRef } from "react";
 import { Link, useHistory } from "react-router-dom";
 
 export const Register = (props) => {
@@ -9,10 +9,22 @@ export const Register = (props) => {
   const password = React.createRef();
   const verifyPassword = React.createRef();
   const passwordDialog = React.createRef();
-  const image_url = React.createRef();
+  const image_url = useRef();
   const history = useHistory();
-
+  const [currentPicture, setCurrentPicture] = useState({});
   // const is_teacher = React.createRef();
+
+  const getBase64 = (file, callback) => {
+    const reader = new FileReader();
+    reader.addEventListener("load", () => callback(reader.result));
+    reader.readAsDataURL(file);
+  };
+
+  const createProfileImageString = (event) => {
+    getBase64(event.target.files[0], (base64ImageString) => {
+      setCurrentPicture(base64ImageString);
+    });
+  };
 
   const handleRegister = (e) => {
     e.preventDefault();
@@ -25,7 +37,7 @@ export const Register = (props) => {
         bio: bio.current.value,
         email: email.current.value,
         password: password.current.value,
-        image_url: image_url.current.value,
+        image_url: currentPicture,
         // is_teacher: is_teacher.current.value,
       };
 
@@ -102,7 +114,7 @@ export const Register = (props) => {
             required
           />
         </fieldset>
-        <fieldset>
+        {/* <fieldset>
           <label htmlFor="inputImage"> Profile Image </label>
           <input
             ref={image_url}
@@ -112,6 +124,22 @@ export const Register = (props) => {
             placeholder="profile image"
             required
           />
+        </fieldset> */}
+        <fieldset>
+          <input
+            type="file"
+            id="image_url"
+            ref={image_url}
+            onChange={createProfileImageString}
+          />
+          {/* <input type="hidden" name="image" /> */}
+          {/* <button
+            onClick={() => {
+              // Upload the stringified image that is stored in state
+            }}
+          >
+            Upload
+          </button> */}
         </fieldset>
         <fieldset>
           <label htmlFor="inputPassword"> Password </label>
