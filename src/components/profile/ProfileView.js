@@ -1,4 +1,5 @@
 import React, { useEffect, useContext } from "react";
+import { ConnectionList } from "../connections/ConnectionList.js";
 import { MeetingForm } from "../events/MeetingForm.js";
 import { MeetingList } from "../events/MeetingList.js";
 import { Profile } from "./Profile.js";
@@ -15,6 +16,9 @@ export const ProfileView = () => {
       </div>
       <div className="ml-96 max-w-5xl">
         <Profile />
+      </div>
+      <div className="absolute top-96 left-3 w-1/6">
+        <ConnectionList />
       </div>
     </article>
   );
