@@ -20,6 +20,10 @@ export const PostForm = () => {
     getCategories();
   }, []);
 
+  const refreshPage = () => {
+    window.location.reload();
+  };
+
   const changePostState = (event) => {
     const newPostState = { ...currentPost };
     newPostState[event.target.name] = event.target.value;
@@ -110,14 +114,14 @@ export const PostForm = () => {
             description: currentPost.description,
           };
 
-          createPost(post).then(() => history.push("/"));
+          createPost(post).then(refreshPage);
         }}
       >
         Create
       </button>
       <button
         className="cancel_post py-2 px-4 bg-red-700 text-white font-semibold rounded-lg shadow-md hover:bg-red-500 focus:outline-none focus:ring-2 focus:ring-green-400 focus:ring-opacity-75"
-        onClick={() => history.push("/")}
+        onClick={refreshPage}
       >
         Cancel
       </button>
