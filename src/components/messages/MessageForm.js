@@ -1,10 +1,12 @@
 import React, { useContext, useState, useEffect } from "react";
+import { useHistory, useParams } from "react-router-dom";
 import { UserContext } from "../users/UserProviders";
 import { MessageContext } from "./MessageProvider";
 
 export const MessageForm = () => {
   const { sendMessage } = useContext(MessageContext);
   const { getUsers, users } = useContext(UserContext);
+  const history = useHistory();
 
   const [currentMessage, setCurrentMessage] = useState({
     title: "",
@@ -18,6 +20,10 @@ export const MessageForm = () => {
     getUsers();
   }, []);
 
+  const refreshPage = () => {
+    window.location.reload();
+  };
+
   const changeMessageState = (event) => {
     const newMessageState = { ...currentMessage };
     newMessageState[event.target.name] = event.target.value;
@@ -26,7 +32,7 @@ export const MessageForm = () => {
 
   return (
     <form className="message_form bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 mt-6">
-      <h2 className="postForm__title mb-4 block  text-sm font-bold text-gray-700">
+      <h2 className="postForm__title mb-4 font-extrabold text-2xl">
         Create Message
       </h2>
       <fieldset>
@@ -41,7 +47,7 @@ export const MessageForm = () => {
             name="title"
             required
             autoFocus
-            className="form-control shadow appearance-none border rounded  py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            className="form-control w-2/3 shadow appearance-none border rounded  py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             id="username"
             placeholder="messages ..."
             value={currentMessage.title}
@@ -57,7 +63,9 @@ export const MessageForm = () => {
             name="description"
             required
             autoFocus
-            className="form-control form-control shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            rows="5"
+            placeholder="description of your message ..."
+            className="form-control w-2/3 shadow appearance-none border rounded  py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             value={currentMessage.description}
             onChange={changeMessageState}
           />
@@ -70,7 +78,7 @@ export const MessageForm = () => {
             value={currentMessage.recipient}
             name="recipient"
             id="recipient"
-            className="mb-2 tracking-wide form-control form-control shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            className="form-control w-2/3 shadow appearance-none border rounded  py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             onChange={changeMessageState}
           >
             <option value="0">Select recipient here</option>
@@ -109,12 +117,12 @@ export const MessageForm = () => {
       >
         Create
       </button>
-      {/* <button
-        className="py-2 px-4 bg-red-700 text-white font-semibold rounded-lg shadow-md hover:bg-red-500 focus:outline-none focus:ring-2 focus:ring-green-400 focus:ring-opacity-75"
-        onClick={() => history.push("/messages")}
+      <button
+        className="m-8 py-2 px-4 bg-red-700 text-white font-semibold rounded-lg shadow-md hover:bg-red-500 focus:outline-none focus:ring-2 focus:ring-green-400 focus:ring-opacity-75"
+        onClick={refreshPage}
       >
         Cancel
-      </button> */}
+      </button>
     </form>
   );
 };

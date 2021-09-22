@@ -9,6 +9,10 @@ export const CategoryForm = () => {
     description: "",
   });
 
+  const refreshPage = () => {
+    window.location.reload();
+  };
+
   const changeCategoryState = (event) => {
     const newCategoryState = { ...currentCategory };
     newCategoryState[event.target.name] = event.target.value;
@@ -22,9 +26,11 @@ export const CategoryForm = () => {
       </h2>
       <fieldset>
         <div className="form-group mb-4">
-          <label htmlFor="name  block text-gray-700 text-sm font-bold mb-2">
-            Title of Category:
-          </label>
+          <div className="form-group block mb-2 text-sm font-bold text-gray-700">
+            <label htmlFor="name  block text-gray-700 text-sm font-bold mb-2">
+              Title of Category:
+            </label>
+          </div>
           <div className="form-group mb-4">
             <input
               type="text"
@@ -40,11 +46,14 @@ export const CategoryForm = () => {
           </div>
         </div>
         <div className="form-group mb-4">
-          <label htmlFor="description">Write your description here:</label>
+          <div className="form-group block mb-2 text-sm font-bold text-gray-700">
+            <label htmlFor="description">Write your description here:</label>
+          </div>
           <div>
             <textarea
               type="text"
               name="description"
+              placeholder="The subject is about ..."
               cols={10}
               rows={5}
               required
@@ -75,6 +84,12 @@ export const CategoryForm = () => {
         }}
       >
         Create
+      </button>
+      <button
+        className="m-8 py-2 px-4 bg-red-700 text-white font-semibold rounded-lg shadow-md hover:bg-red-500 focus:outline-none focus:ring-2 focus:ring-green-400 focus:ring-opacity-75"
+        onClick={refreshPage}
+      >
+        Cancel
       </button>
     </form>
   );

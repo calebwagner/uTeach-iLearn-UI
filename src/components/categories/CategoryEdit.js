@@ -38,34 +38,43 @@ export const UpdateCategory = () => {
   };
 
   return (
-    <form className="notebookForm bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
-      <h2 className="notebookForm__title mb-4">Edit Category</h2>
+    <form className="notebookForm mt-12 bg-white px-8 pt-6 pb-8 mb-4 space-y-6 m-8category p-8  mx-auto  rounded-xl shadow-md overflow-hidden md:max-w-2xl m-0">
+      <h2 className="notebookForm__title mb-4 font-extrabold text-2xl">
+        Edit Category
+      </h2>
       <fieldset>
         <div className="form-group mb-4">
-          <label htmlFor="name block text-gray-700 text-sm font-bold mb-2">
-            Title of Category:{" "}
-          </label>
+          <div className="form-group block mb-2 text-sm font-bold text-gray-700">
+            <label htmlFor="name block text-gray-700 text-sm font-bold mb-2">
+              Title of Category:
+            </label>
+          </div>
           <input
             type="text"
             name="title"
             required
             autoFocus
-            className="form-control shadow appearance-none border rounded  py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            className="form-control w-2/3 shadow appearance-none border rounded  py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             value={currentCategory.title}
             onChange={changeCategoryState}
           />
         </div>
-        <div className="form-group">
-          <label htmlFor="description">Write your description here:</label>
-          <input
+        <div className="form-group block mb-2 text-sm font-bold text-gray-700">
+          <div className="form-group mb-4 ">
+            <label htmlFor="description block mb-2 text-sm font-bold text-gray-700">
+              Write your description here:
+            </label>
+          </div>
+          <textarea
             type="text"
             name="description"
             required
             autoFocus
-            className="form-control shadow appearance-none border rounded  py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            rows="6"
+            className="form-control h- w-2/3 shadow appearance-none border rounded  py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             value={currentCategory.description}
             onChange={changeCategoryState}
-          ></input>
+          />
         </div>
       </fieldset>
 

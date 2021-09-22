@@ -31,13 +31,15 @@ export const UsersProfileDetail = () => {
     });
   }, [isConnected]);
 
+  const refreshPage = () => {
+    window.location.reload();
+  };
+
   const addAConnection = () => {
     addConnection({
       user: users.user?.id,
       profile: parseInt(authorId),
-    }).then(() => {
-      history.push(`/authors/${authorId}`);
-    });
+    }).then(refreshPage);
   };
 
   const alreadyConnected = connections.find((connected) => {
@@ -45,9 +47,7 @@ export const UsersProfileDetail = () => {
   });
 
   const unaddAConnection = () => {
-    unaddConnection(alreadyConnected.id).then(() => {
-      history.push(`/authors/${authorId}`);
-    });
+    unaddConnection(alreadyConnected.id).then(refreshPage);
   };
 
   useEffect(() => {

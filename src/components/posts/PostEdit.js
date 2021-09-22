@@ -58,15 +58,17 @@ export const UpdatePost = () => {
   };
 
   return (
-    <form className="notebookForm justify-center bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+    <form className="notebookForm mt-12 bg-white px-8 pt-6 pb-8 mb-4 space-y-6 m-8category p-8  mx-auto  rounded-xl shadow-md overflow-hidden md:max-w-2xl m-0">
       <h2 className="notebookForm__title mb-4 font-extrabold text-2xl">
         Edit Post
       </h2>
       <fieldset>
-        <div className="form-group">
-          <label htmlFor="name block text-gray-700 text-sm font-bold mb-2">
-            Title of post:
-          </label>
+        <div className="form-group mb-4">
+          <div className="form-group block mb-2 text-sm font-bold text-gray-700">
+            <label htmlFor="name block text-gray-700 text-sm font-bold mb-2">
+              Title of post:
+            </label>
+          </div>
           <input
             type="text"
             name="title"
@@ -77,8 +79,10 @@ export const UpdatePost = () => {
             onChange={changePostState}
           />
         </div>
-        <div className="form-group">
-          <label htmlFor="post_category">Category:</label>
+        <div className="form-group mb-4">
+          <div className="form-group block mb-2 text-sm font-bold text-gray-700">
+            <label htmlFor="post_category">Category:</label>
+          </div>
           <select
             value={currentPost.category}
             name="category"
@@ -94,8 +98,12 @@ export const UpdatePost = () => {
             ))}
           </select>
         </div>
-        <div className="form-group">
-          <label htmlFor="maker">Insert Image URL:</label>
+        <div className="form-group mb-4">
+          <div className="form-group block mb-2 text-sm font-bold text-gray-700">
+            <label htmlFor="maker block mb-2 text-sm font-bold text-gray-700">
+              Insert Image URL:
+            </label>
+          </div>
           <input
             type="text"
             name="image"
@@ -106,17 +114,22 @@ export const UpdatePost = () => {
             onChange={changePostState}
           ></input>
         </div>
-        <div className="form-group">
-          <label htmlFor="description">Write your description here:</label>
-          <input
+        <div className="form-group mb-4">
+          <div className="form-group block mb-2 text-sm font-bold text-gray-700">
+            <label htmlFor="description block mb-2 text-sm font-bold text-gray-700">
+              Write your description here:
+            </label>
+          </div>
+          <textarea
             type="text"
             name="description"
             required
             autoFocus
+            rows="5"
             className="form-control w-2/3 shadow appearance-none border rounded  py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             value={currentPost.description}
             onChange={changePostState}
-          ></input>
+          />
         </div>
       </fieldset>
 

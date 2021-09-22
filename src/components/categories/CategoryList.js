@@ -12,8 +12,8 @@ export const CategoryList = () => {
 
   return (
     <>
-      <div className="categories_list space-y-6 m-8  p-8  mx-auto  rounded-xl shadow-md overflow-hidden md:max-w-2xl">
-        <div className="">
+      <div className="categories_list space-y-6 pb-8 static mt-12 ">
+        <div className="float-right w-1/4 fixed top-0 right-0 z-50 col-span-3 m-6">
           <CategoryForm />
         </div>
         {categories.map((category) => (
