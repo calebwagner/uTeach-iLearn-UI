@@ -3,6 +3,7 @@ import { PostContext } from "./PostProvider";
 import { PostDetail } from "./PostDetail";
 import { useHistory } from "react-router-dom";
 import "tailwindcss/tailwind.css";
+import { PostForm } from "./PostForm";
 
 export const PostList = () => {
   const { posts, getPosts } = useContext(PostContext);
@@ -14,13 +15,8 @@ export const PostList = () => {
 
   return (
     <section className="space-y-6 pb-8 mt-12">
-      <div className="flex items-center justify-center pb-8">
-        <button
-          className=" py-2 px-4 bg-blue-700 text-white font-semibold rounded-lg shadow-md hover:bg-blue-500 focus:outline-none focus:ring-2 focus:ring-green-400 focus:ring-opacity-75"
-          onClick={() => history.push("/create")}
-        >
-          Create Post
-        </button>
+      <div className="float-right w-1/4 fixed top-0 right-0 z-50 col-span-3 m-6">
+        <PostForm />
       </div>
       {posts.map((post) => {
         return <PostDetail key={post.id} post={post} />;
