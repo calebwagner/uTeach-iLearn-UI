@@ -26,25 +26,23 @@ export const PostDetail = ({ post }) => {
     });
   }, [postIsSaved]);
 
+  const refreshPage = () => {
+    window.location.reload();
+  };
+
   const SaveThePost = () => {
     savePost({
       user: post.user.user.id,
       post: post.id,
-    }).then(() => {
-      history.push("/");
-    });
+    }).then(refreshPage);
   };
-
-  //   console.log(savedPost?.post);
 
   const foundSavedPost = savedPosts.find((savedPost) => {
     return post?.id === savedPost?.post.id;
   });
 
   const unsaveThePost = () => {
-    unsavePost(foundSavedPost.id).then(() => {
-      history.push("/");
-    });
+    unsavePost(foundSavedPost.id).then(refreshPage);
   };
 
   const [time, setTime] = useState("");
@@ -57,46 +55,50 @@ export const PostDetail = ({ post }) => {
     }
   }, [post]);
 
-  //   console.log("HERE!!!!!");
-
-  //   console.log(post?.user?.user?.id);
-
   return (
     <section className="p-8 max-w-md mx-auto bg-white rounded-xl shadow-md overflow-hidden md:max-w-2xl">
       <div className="md:flex-shrink-0">
-        <div className="flex">
+        <div className="flex space-y-4">
           <Link to={`/authors/${post?.user?.user?.id}`}>
             <img
-              className="h-48 w-16 object-scale-dow md:w-48 cursor-auto transition duration-500 ease-in-out  transform hover:-translate-y-2 hover:scale-110"
+              className="rounded-full mr-6 object-scale-dow md:w-24 cursor-auto transition duration-500 ease-in-out  transform hover:-translate-y-2 hover:scale-110"
               //   src={post.user.image_url}
               //   src={require("./images/profilepic.jpg")}
-              src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg"
+              //   src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg"
+              src="https://t4.ftcdn.net/jpg/00/64/67/63/360_F_64676383_LdbmhiNM6Ypzb3FM4PPuFP9rHe7ri8Ju.jpg"
               alt="profile picture"
             ></img>
           </Link>
-          <div className="space-y-4">
-            <h3 className="post_title_link cursor-auto transition duration-500 ease-in-out  transform hover:-translate-y-2 hover:scale-110">
+          <div className="">
+            <h3 className="post_title_link rounded-full hover:bg-green-100 block mb-2 text-sm font-extrabold text-gray-700 cursor-auto transition duration-500 ease-in-out  transform hover:-translate-y-2 hover:scale-110">
               <Link to={`/edit/${post.id}`}>
                 Title: {post.title} ||
-                <div className=" inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">
+                <div className=" inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-bold text-gray-700 mr-2 mb-2">
                   {post.category?.title}
                 </div>
               </Link>
             </h3>
-            <div className="inline-">
+            <div className="block mb-2 text-sm font-bold text-gray-700">
               Author: {post.user.user.first_name} {post.user.user.last_name}
             </div>
-            <div>Posted on: {time}</div>
+            <div className="block mb-2 text-sm font-bold text-gray-700">
+              Posted on: {time}
+            </div>
           </div>
         </div>
         <div>
-          <h5>Description: {post.description}</h5>
+          <h5 className="w-full rounded-md mt-4 inline-block bg-gray-200 px-3 py-1 text-sm font-bold text-gray-700 mr-2 mb-2">
+            <div className="block mb-2 font-extrabold text-gray-700">
+              Description:
+            </div>
+            {post.description}
+          </h5>
         </div>
-        <img
+        {/* <img
           className="h-48 w-full object-cover md:w-48"
           src="https://www.aihr.com/wp-content/uploads/Learning-and-development.png"
           alt="picture"
-        />
+        /> */}
 
         <div className="flex items-center justify-center">
           {postIsSaved ? (

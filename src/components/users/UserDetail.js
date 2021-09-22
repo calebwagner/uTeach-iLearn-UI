@@ -26,13 +26,15 @@ export const UserDetail = ({ user }) => {
     });
   }, [isConnected]);
 
+  const refreshPage = () => {
+    window.location.reload();
+  };
+
   const addAConnection = () => {
     addConnection({
       user: user.user.id,
       profile: user.id,
-    }).then(() => {
-      history.push("/users");
-    });
+    }).then(refreshPage);
   };
 
   const foundConnection = connections.find((connected) => {
@@ -40,9 +42,7 @@ export const UserDetail = ({ user }) => {
   });
 
   const unaddAConnection = () => {
-    unaddConnection(foundConnection.id).then(() => {
-      history.push("/users");
-    });
+    unaddConnection(foundConnection.id).then(refreshPage);
   };
 
   useEffect(() => {

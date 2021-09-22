@@ -28,7 +28,7 @@ export const PostForm = () => {
 
   return (
     <form className="postForm mt-12 bg-white px-8 pt-6 pb-8 mb-4 space-y-6 m-8category p-8  mx-auto  rounded-xl shadow-md overflow-hidden md:max-w-2xl m-0">
-      <h2 className="postForm__title block mb-2 text-sm font-bold text-gray-700">
+      <h2 className="postForm__title mb-4 font-extrabold text-2xl">
         Create Post
       </h2>
       <fieldset>
@@ -39,6 +39,7 @@ export const PostForm = () => {
           <input
             type="text"
             name="title"
+            placeholder="I'm starting to learn ..."
             required
             autoFocus
             className="form-control form-control w-2/3 shadow appearance-none border rounded  py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
@@ -72,7 +73,7 @@ export const PostForm = () => {
             name="image"
             required
             autoFocus
-            className="form-control block mb-2 text-sm font-bold text-gray-700 form-control w-2/3 shadow appearance-none border rounded  py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            className="form-control block mb-2 text-sm font-bold w-2/3 shadow appearance-none border rounded  py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             value={currentPost.image}
             onChange={changePostState}
           ></input>
@@ -81,15 +82,17 @@ export const PostForm = () => {
           <div className="block mb-2 text-sm font-bold text-gray-700">
             <label htmlFor="description">Write your description here:</label>
           </div>
-          <input
+          <textarea
             type="text"
             name="description"
+            placeholder="I need help with ..."
             required
             autoFocus
+            rows="5"
             className="form-control form-control w-2/3 shadow appearance-none border rounded  py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             value={currentPost.description}
             onChange={changePostState}
-          ></input>
+          />
         </div>
       </fieldset>
 

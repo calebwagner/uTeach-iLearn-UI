@@ -6,12 +6,16 @@ import { Profile } from "./Profile.js";
 
 export const ProfileView = () => {
   return (
-    <article className="profile">
-      <div className="float-right w-1/4 sticky top-0 z-50 col-span-3 ">
+    <article className="profile  ">
+      <div className="float-right w-1/4  top-0 right-0 z-50 col-span-3 m-6 ">
         <MeetingForm />
-        <MeetingList />
+        <div className="overflow-y-scroll">
+          <MeetingList />
+        </div>
       </div>
-      <Profile />
+      <div className="ml-96 max-w-5xl">
+        <Profile />
+      </div>
     </article>
   );
 };
