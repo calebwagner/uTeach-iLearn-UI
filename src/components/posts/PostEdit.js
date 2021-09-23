@@ -20,17 +20,14 @@ export const UpdatePost = () => {
   });
 
   useEffect(() => {
-    getPostById(parseInt(postId)).then(
-      (
-        post // I need the current values of the post I want to edit
-      ) =>
-        setCurrentPost({
-          title: post.title,
-          category: post.category.id, // parseInt(currentPost.category) was getting whole object but I needed just the ID
-          created_on: post.created_on,
-          // image: post.image,
-          description: post.description,
-        })
+    getPostById(parseInt(postId)).then((post) =>
+      setCurrentPost({
+        title: post.title,
+        category: post.category.id, // parseInt(currentPost.category) was getting whole object but I needed just the ID
+        created_on: post.created_on,
+        // image: post.image,
+        description: post.description,
+      })
     );
   }, [postId]);
 
@@ -98,22 +95,7 @@ export const UpdatePost = () => {
             ))}
           </select>
         </div>
-        {/* <div className="form-group mb-4">
-          <div className="form-group block mb-2 text-sm font-bold text-gray-700">
-            <label htmlFor="maker block mb-2 text-sm font-bold text-gray-700">
-              Insert Image URL:
-            </label>
-          </div>
-          <input
-            type="text"
-            name="image"
-            required
-            autoFocus
-            className="form-control w-2/3 shadow appearance-none border rounded  py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-            value={currentPost.image}
-            onChange={changePostState}
-          ></input>
-        </div> */}
+
         <div className="form-group mb-4">
           <div className="form-group block mb-2 text-sm font-bold text-gray-700">
             <label htmlFor="description block mb-2 text-sm font-bold text-gray-700">

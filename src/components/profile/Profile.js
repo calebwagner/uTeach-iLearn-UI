@@ -9,8 +9,6 @@ export const Profile = () => {
     getProfile();
   }, []);
 
-  //   console.log(profile.app_user.image_url);
-
   return (
     <div className="">
       <div className="space-y-6 pb-8 m-0 max-w-screen-2xl ">

@@ -1,9 +1,8 @@
-import React, { useEffect, useContext } from "react";
+import React from "react";
 import { ConnectionList } from "../connections/ConnectionList.js";
 import { MeetingForm } from "../events/MeetingForm.js";
 import { MeetingList } from "../events/MeetingList.js";
 import { Profile } from "./Profile.js";
-// import { HumanDate } from "../utils/HumanDate.js";
 
 export const ProfileView = () => {
   return (

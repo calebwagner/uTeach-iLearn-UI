@@ -1,5 +1,4 @@
 import React, { useContext, useEffect } from "react";
-import "tailwindcss/tailwind.css";
 import { SavedPostDetail } from "./SavedPostDetail";
 import { SavedPostContext } from "./SavedPostsProvider";
 

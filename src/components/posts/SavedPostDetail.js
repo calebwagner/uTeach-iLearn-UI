@@ -1,9 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
-import { useHistory, useParams, Link } from "react-router-dom";
-import { AuthorContext } from "../authors/AuthorProvider";
-import { ConnectionContext } from "../connections/ConnectionProvider";
-import { ProfileContext } from "../profile/ProfileProvider";
-import { PostContext, PostProvider } from "./PostProvider";
+import { useHistory } from "react-router-dom";
+import { PostContext } from "./PostProvider";
 import { SavedPostContext } from "./SavedPostsProvider";
 import { HumanDate } from "../utils/HumanDate";
 

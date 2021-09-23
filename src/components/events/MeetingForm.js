@@ -1,12 +1,10 @@
 import React, { useContext, useState, useEffect } from "react";
-import { useHistory, useParams } from "react-router-dom";
 import { ConnectionContext } from "../connections/ConnectionProvider";
 import { MeetingContext } from "./MeetingProvider";
 
 export const MeetingForm = () => {
   const { createMeeting } = useContext(MeetingContext);
   const { getConnections, connections } = useContext(ConnectionContext);
-  const history = useHistory();
 
   const [currentMeeting, setCurrentMeeting] = useState({
     connection: 0,
@@ -63,7 +61,7 @@ export const MeetingForm = () => {
             <option value="select">Select connection here</option>
             {connections.map((connection) => (
               <option key={connection.id} value={connection.id}>
-                {connection.profile.user.first_name}
+                {connection.profile.user.first_name}{" "}
                 {connection.profile.user.last_name}
               </option>
             ))}
