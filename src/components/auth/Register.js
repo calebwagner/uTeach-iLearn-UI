@@ -80,6 +80,7 @@ export const Register = (props) => {
         <h1 className="block mb-4 font-extrabold text-2xl">
           Register an account
         </h1>
+
         <fieldset>
           <div className="m-4">
             <label htmlFor="firstName  m-4 block text-gray-700 text-sm font-bold mb-2">
@@ -96,6 +97,7 @@ export const Register = (props) => {
             autoFocus
           />
         </fieldset>
+
         <fieldset>
           <div className="m-4">
             <label htmlFor="lastName "> Last Name </label>
@@ -109,6 +111,7 @@ export const Register = (props) => {
             required
           />
         </fieldset>
+
         <fieldset>
           <div className="m-4">
             <label htmlFor="inputEmail"> Email address </label>
@@ -122,17 +125,7 @@ export const Register = (props) => {
             required
           />
         </fieldset>
-        {/* <fieldset>
-          <label htmlFor="inputImage"> Profile Image </label>
-          <input
-            ref={image_url}
-            type="image_url"
-            name="image_url"
-            className="form-control shadow appearance-none border rounded  py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-            placeholder="profile image"
-            required
-          />
-        </fieldset> */}
+
         <fieldset className="m-4">
           <input
             type="file"
@@ -140,15 +133,8 @@ export const Register = (props) => {
             ref={image_url}
             onChange={createProfileImageString}
           />
-          {/* <input type="hidden" name="image" /> */}
-          {/* <button
-            onClick={() => {
-              // Upload the stringified image that is stored in state
-            }}
-          >
-            Upload
-          </button> */}
         </fieldset>
+
         <fieldset>
           <div className="m-4">
             <label htmlFor="inputPassword"> Password </label>
@@ -162,6 +148,7 @@ export const Register = (props) => {
             required
           />
         </fieldset>
+
         <fieldset>
           <div className="m-4">
             <label htmlFor="verifyPassword"> Verify Password </label>
@@ -175,6 +162,7 @@ export const Register = (props) => {
             required
           />
         </fieldset>
+
         <fieldset>
           <div className="m-4">
             <label htmlFor="verifyPassword"> Bio </label>
@@ -188,6 +176,7 @@ export const Register = (props) => {
             placeholder="Let other users know a little bit about you..."
           />
         </fieldset>
+
         <fieldset
           style={{
             textAlign: "center",
@@ -199,9 +188,6 @@ export const Register = (props) => {
           >
             Register
           </button>
-          {/* <button className="link--register m-8 py-2 px-4 bg-blue-700 text-white font-semibold rounded-lg shadow-md hover:bg-blue-500 focus:outline-none focus:ring-2 focus:ring-green-400 focus:ring-opacity-75">
-            Already registered? <Link to="/login">Login</Link>
-          </button> */}
         </fieldset>
       </form>
     </main>

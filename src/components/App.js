@@ -17,9 +17,6 @@ export const App = () => (
                 <aside class="col-span-3 sticky top-0">
                   <Aside />
                 </aside>
-                {/* <div class="col-span-3 sticky top-0 z-50">
-                  <SearchBar />
-                </div> */}
               </div>
               <main class="col-span-8">
                 <ApplicationViews />

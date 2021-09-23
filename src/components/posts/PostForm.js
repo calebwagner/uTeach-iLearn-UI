@@ -1,11 +1,9 @@
 import React, { useContext, useState, useEffect } from "react";
 import { PostContext } from "./PostProvider";
-import { useHistory } from "react-router-dom";
 import { CategoryContext } from "../categories/CategoryProvider";
 
 export const PostForm = () => {
-  const history = useHistory();
-  const { posts, createPost, getPosts } = useContext(PostContext);
+  const { createPost } = useContext(PostContext);
   const { getCategories, categories } = useContext(CategoryContext);
 
   const [currentPost, setCurrentPost] = useState({
@@ -70,18 +68,7 @@ export const PostForm = () => {
             ))}
           </select>
         </div>
-        {/* <div className="form-group block mb-2 text-sm font-bold text-gray-700">
-          <label htmlFor="maker">Insert Image URL:</label>
-          <input
-            type="text"
-            name="image"
-            required
-            autoFocus
-            className="form-control block mb-2 text-sm font-bold w-2/3 shadow appearance-none border rounded  py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-            value={currentPost.image}
-            onChange={changePostState}
-          ></input>
-        </div> */}
+
         <div className="form-group">
           <div className="block mb-2 text-sm font-bold text-gray-700">
             <label htmlFor="description">Write your description here:</label>

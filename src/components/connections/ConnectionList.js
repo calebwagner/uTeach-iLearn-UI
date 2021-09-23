@@ -1,7 +1,7 @@
 import React, { useContext, useEffect } from "react";
-import "tailwindcss/tailwind.css";
 import { ConnectionDetail } from "./ConnectionDetail";
 import { ConnectionContext } from "./ConnectionProvider";
+import "tailwindcss/tailwind.css";
 
 export const ConnectionList = () => {
   const { getConnections, connections } = useContext(ConnectionContext);
@@ -21,5 +21,3 @@ export const ConnectionList = () => {
     </section>
   );
 };
-
-// ml-4 space-y-6 pb-8 static mt-12 bg-white rounded-xl w-1/5 p-3

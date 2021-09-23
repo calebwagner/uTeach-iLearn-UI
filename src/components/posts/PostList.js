@@ -1,13 +1,11 @@
 import React, { useContext, useEffect } from "react";
 import { PostContext } from "./PostProvider";
 import { PostDetail } from "./PostDetail";
-import { useHistory } from "react-router-dom";
-import "tailwindcss/tailwind.css";
 import { PostForm } from "./PostForm";
+import "tailwindcss/tailwind.css";
 
 export const PostList = () => {
   const { posts, getPosts } = useContext(PostContext);
-  const history = useHistory();
 
   useEffect(() => {
     getPosts();

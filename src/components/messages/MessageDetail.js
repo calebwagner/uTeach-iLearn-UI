@@ -1,8 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
-import "tailwindcss/tailwind.css";
 import { MessageContext } from "./MessageProvider";
 import { HumanDate } from "../utils/HumanDate";
+import "tailwindcss/tailwind.css";
 
 export const MessageDetail = ({ message }) => {
   const { deleteMessage, updateMessage } = useContext(MessageContext);
@@ -46,9 +45,7 @@ export const MessageDetail = ({ message }) => {
         <div className="flex space-y-4">
           <img
             className=" inline object-cover w-24 h-24 mr-2 rounded-full"
-            src={message.recipient.image_url}
-            //   src={require("./images/profilepic.jpg")}
-            // src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg"
+            src={message.user.image_url}
             alt="profile picture"
           ></img>
 
@@ -62,10 +59,6 @@ export const MessageDetail = ({ message }) => {
             <div className="block mb-2 text-sm font-bold text-gray-700">
               Received on: {time}
             </div>
-            {/* <div className="block mb-2 text-sm font-bold text-gray-700">
-              Recipient: {message.recipient.user.first_name}{" "}
-              {message.recipient.user.last_name}
-            </div> */}
           </div>
         </div>
         <div>

@@ -1,20 +1,15 @@
 import React, { useEffect, useContext, useState } from "react";
-import { useHistory, useParams, Link } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { AuthorContext } from "../authors/AuthorProvider.js";
 import { ConnectionContext } from "../connections/ConnectionProvider.js";
-import { PostContext } from "../posts/PostProvider.js";
 import { UserContext } from "../users/UserProviders.js";
-import { ProfileContext } from "./ProfileProvider.js";
 
 export const UsersProfileDetail = () => {
-  const { profile, getProfile, getProfileById } = useContext(ProfileContext);
-  const { posts, getPosts, getPostById } = useContext(PostContext);
   const { unaddConnection, addConnection, getConnections, connections } =
     useContext(ConnectionContext);
-  const { users, getUsers } = useContext(UserContext);
+  const { users } = useContext(UserContext);
   const { getAuthorById, author } = useContext(AuthorContext);
   const { authorId } = useParams();
-  const history = useHistory();
 
   const [isConnected, setIsConnected] = useState();
 

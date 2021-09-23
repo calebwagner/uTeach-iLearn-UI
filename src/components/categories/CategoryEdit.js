@@ -42,6 +42,7 @@ export const UpdateCategory = () => {
       <h2 className="notebookForm__title mb-4 font-extrabold text-2xl">
         Edit Category
       </h2>
+
       <fieldset>
         <div className="form-group mb-4">
           <div className="form-group block mb-2 text-sm font-bold text-gray-700">

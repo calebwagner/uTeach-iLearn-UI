@@ -1,15 +1,14 @@
 import React, { useContext, useEffect, useState } from "react";
-import { Link, useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { PostContext } from "./PostProvider";
+import { SavedPostContext } from "./SavedPostsProvider";
 import { HumanDate } from "../utils/HumanDate";
 import "tailwindcss/tailwind.css";
-import { SavedPostContext } from "./SavedPostsProvider";
 
 export const PostDetail = ({ post }) => {
   const { deletePost } = useContext(PostContext);
   const { savePost, unsavePost, getSavedPosts, savedPosts } =
     useContext(SavedPostContext);
-  const history = useHistory();
 
   const [postIsSaved, setPostIsSaved] = useState();
 
@@ -63,9 +62,6 @@ export const PostDetail = ({ post }) => {
             <img
               className="inline object-cover w-24 h-24 mr-2 rounded-full cursor-auto transition duration-500 ease-in-out  transform hover:-translate-y-2 hover:scale-110"
               src={post.user.image_url}
-              //   src={require("./images/profilepic.jpg")}
-              //   src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg"
-              //   src="https://t4.ftcdn.net/jpg/00/64/67/63/360_F_64676383_LdbmhiNM6Ypzb3FM4PPuFP9rHe7ri8Ju.jpg"
               alt="profile picture"
             ></img>
           </Link>
@@ -94,11 +90,6 @@ export const PostDetail = ({ post }) => {
             {post.description}
           </h5>
         </div>
-        {/* <img
-          className="h-48 w-full object-cover md:w-48"
-          src="https://www.aihr.com/wp-content/uploads/Learning-and-development.png"
-          alt="picture"
-        /> */}
 
         <div className="flex items-center justify-center">
           {postIsSaved ? (

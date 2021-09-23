@@ -1,15 +1,13 @@
 import React, { useContext, useEffect, useState } from "react";
-import { useHistory, useParams, Link } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import { AuthorContext } from "../authors/AuthorProvider";
 import { ConnectionContext } from "../connections/ConnectionProvider";
-import { ProfileContext } from "../profile/ProfileProvider";
 
 export const UserDetail = ({ user }) => {
   const { getAuthorById } = useContext(AuthorContext);
   const { unaddConnection, addConnection, getConnections, connections } =
     useContext(ConnectionContext);
   const { authorId } = useParams();
-  const history = useHistory();
 
   const [isConnected, setIsConnected] = useState();
 
@@ -54,17 +52,8 @@ export const UserDetail = ({ user }) => {
       <img
         className="inline object-cover w-24 h-24 mr-2 rounded-full cursor-auto transition duration-500 ease-in-out  transform hover:-translate-y-2 hover:scale-110"
         src={user.image_url}
-        //   src={require("./images/profilepic.jpg")}
-        // src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg"
         alt="profile picture"
       ></img>
-      <header>
-        <div className="block">
-          <h1 className="block">
-            {/* User: {user?.user?.first_name} {user?.user?.last_name} */}
-          </h1>
-        </div>
-      </header>
       <section className="profile__info">
         <div className="profile__username block mb-2  font-bold text-gray-700">
           Username: {user?.user?.username} || Name: {user?.user?.first_name}{" "}
@@ -75,7 +64,6 @@ export const UserDetail = ({ user }) => {
             profile link
           </Link>
         </button>
-        {/* <div className="profile__bio">About: {user?.user?.bio}</div> */}
         {isConnected ? (
           <button
             className="m-8 py-2 px-4 bg-red-700 text-white font-semibold rounded-lg shadow-md hover:bg-red-500 focus:outline-none focus:ring-2 focus:ring-green-400 focus:ring-opacity-75"

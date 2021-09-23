@@ -11,7 +11,7 @@ export const Meetings = ({ meeting }) => {
           Scheduled Meeting
         </h1>
         <div className="block mb-2 text-md font-bold text-gray-700">
-          Meeting with: {meeting.connection.profile.user.first_name}
+          Meeting with: {meeting.connection.profile.user.first_name}{" "}
           {meeting.connection.profile.user.last_name}
         </div>
         <div className="block mb-2 text-md font-bold text-gray-700">

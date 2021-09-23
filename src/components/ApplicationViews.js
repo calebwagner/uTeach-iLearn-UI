@@ -13,14 +13,10 @@ import { PostForm } from "./posts/PostForm";
 import { PostList } from "./posts/PostList";
 import { PostProvider } from "./posts/PostProvider";
 import { SavedPostProvider } from "./posts/SavedPostsProvider";
-// import { Profile } from "./profile/Profile";
 import { ProfileProvider } from "./profile/ProfileProvider";
 import { ProfileView } from "./profile/ProfileView";
 import { UsersProfileDetail } from "./profile/UsersProfile";
-// import { UserProfile } from "./profile/UsersProfile";
-import { UsersProfileList } from "./profile/UsersProfileList";
 import { UserList } from "./users/UserList";
-// import { UserProfileList } from "./profile/UserProfileList";
 import { UserProvider } from "./users/UserProviders";
 
 export const ApplicationViews = () => {
@@ -59,17 +55,9 @@ export const ApplicationViews = () => {
                           <UpdateCategory />
                         </Route>
 
-                        {/* <Route exact path="/userprofile/:profileId">
-                        <UserProfile />
-                      </Route> */}
-
                         <Route exact path="/profile">
                           <ProfileView />
                         </Route>
-
-                        {/* <Route exact path="/authors/:authorId">
-                        <UsersProfileList />
-                      </Route> */}
 
                         <Route exact path="/authors/:authorId">
                           <UsersProfileDetail />

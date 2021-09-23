@@ -1,8 +1,8 @@
 import React, { useContext, useEffect } from "react";
-import "tailwindcss/tailwind.css";
 import { MessageDetail } from "./MessageDetail";
 import { MessageForm } from "./MessageForm";
 import { MessageContext } from "./MessageProvider";
+import "tailwindcss/tailwind.css";
 
 export const MessageList = () => {
   const { messages, getMessages } = useContext(MessageContext);
