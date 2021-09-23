@@ -11,7 +11,7 @@ export const SavedPostList = () => {
   }, []);
 
   return (
-    <section className="space-y-6 pb-8">
+    <section className="space-y-6 pb-8 ">
       {savedPosts.map((savedPost) => {
         return <SavedPostDetail key={savedPost.id} savedPost={savedPost} />;
       })}

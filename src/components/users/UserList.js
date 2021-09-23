@@ -13,7 +13,7 @@ export const UserList = () => {
   }, []);
 
   return (
-    <section className="space-y-6 pb-8">
+    <section className="space-y-6 pb-8 m-4 p-4">
       {users.map((user) => {
         return <UserDetail key={user.id} user={user} />;
       })}

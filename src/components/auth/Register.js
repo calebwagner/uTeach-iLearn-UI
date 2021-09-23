@@ -77,23 +77,29 @@ export const Register = (props) => {
         className="form--login bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4"
         onSubmit={handleRegister}
       >
-        <h1 className="h3 mb-3 font-weight-normal">Register an account</h1>
+        <h1 className="block mb-4 font-extrabold text-2xl">
+          Register an account
+        </h1>
         <fieldset>
-          <label htmlFor="firstName block text-gray-700 text-sm font-bold mb-2">
-            First Name
-          </label>
+          <div className="m-4">
+            <label htmlFor="firstName  m-4 block text-gray-700 text-sm font-bold mb-2">
+              First Name
+            </label>
+          </div>
           <input
             ref={firstName}
             type="text"
             name="firstName"
-            className="form-control shadow appearance-none border rounded  py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            className="form-control  shadow appearance-none border rounded  py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             placeholder="First name"
             required
             autoFocus
           />
         </fieldset>
         <fieldset>
-          <label htmlFor="lastName"> Last Name </label>
+          <div className="m-4">
+            <label htmlFor="lastName "> Last Name </label>
+          </div>
           <input
             ref={lastName}
             type="text"
@@ -104,7 +110,9 @@ export const Register = (props) => {
           />
         </fieldset>
         <fieldset>
-          <label htmlFor="inputEmail"> Email address </label>
+          <div className="m-4">
+            <label htmlFor="inputEmail"> Email address </label>
+          </div>
           <input
             ref={email}
             type="email"
@@ -125,7 +133,7 @@ export const Register = (props) => {
             required
           />
         </fieldset> */}
-        <fieldset>
+        <fieldset className="m-4">
           <input
             type="file"
             id="image_url"
@@ -142,7 +150,9 @@ export const Register = (props) => {
           </button> */}
         </fieldset>
         <fieldset>
-          <label htmlFor="inputPassword"> Password </label>
+          <div className="m-4">
+            <label htmlFor="inputPassword"> Password </label>
+          </div>
           <input
             ref={password}
             type="password"
@@ -153,7 +163,9 @@ export const Register = (props) => {
           />
         </fieldset>
         <fieldset>
-          <label htmlFor="verifyPassword"> Verify Password </label>
+          <div className="m-4">
+            <label htmlFor="verifyPassword"> Verify Password </label>
+          </div>
           <input
             ref={verifyPassword}
             type="password"
@@ -164,10 +176,14 @@ export const Register = (props) => {
           />
         </fieldset>
         <fieldset>
-          <label htmlFor="verifyPassword"> Bio </label>
+          <div className="m-4">
+            <label htmlFor="verifyPassword"> Bio </label>
+          </div>
           <textarea
             ref={bio}
             name="bio"
+            cols="50"
+            rows="10"
             className="form-control shadow appearance-none border rounded  py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             placeholder="Let other users know a little bit about you..."
           />
@@ -183,11 +199,11 @@ export const Register = (props) => {
           >
             Register
           </button>
+          {/* <button className="link--register m-8 py-2 px-4 bg-blue-700 text-white font-semibold rounded-lg shadow-md hover:bg-blue-500 focus:outline-none focus:ring-2 focus:ring-green-400 focus:ring-opacity-75">
+            Already registered? <Link to="/login">Login</Link>
+          </button> */}
         </fieldset>
       </form>
-      <section className="link--register m-8 py-2 px-4 bg-blue-700 text-white font-semibold rounded-lg shadow-md hover:bg-blue-500 focus:outline-none focus:ring-2 focus:ring-green-400 focus:ring-opacity-75">
-        Already registered? <Link to="/login">Login</Link>
-      </section>
     </main>
   );
 };

@@ -69,7 +69,7 @@ export const MessageDetail = ({ message }) => {
           </div>
         </div>
         <div>
-          <h5 className="w-full rounded-md mt-4 inline-block bg-gray-200 px-3 py-1 text-sm font-bold text-gray-700 mr-2 mb-2">
+          <h5 className="w-full rounded-md mt-4 inline-block bg-gray-100 px-3 py-1 text-sm font-bold text-gray-700 mr-2 mb-2">
             <div className="font-extrabold">Description:</div>
             {message.description}
           </h5>
