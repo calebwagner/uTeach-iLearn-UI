@@ -36,21 +36,6 @@ export const PostForm = () => {
       <fieldset>
         <div className="form-group block mb-2 text-sm font-bold text-gray-700">
           <div className="block mb-2 text-sm font-bold text-gray-700">
-            <label htmlFor="name ">Title of post:</label>
-          </div>
-          <input
-            type="text"
-            name="title"
-            placeholder="I'm starting to learn ..."
-            required
-            autoFocus
-            className="form-control form-control w-2/3 shadow appearance-none border rounded  py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-            value={currentPost.title}
-            onChange={changePostState}
-          />
-        </div>
-        <div className="form-group block mb-2 text-sm font-bold text-gray-700">
-          <div className="block mb-2 text-sm font-bold text-gray-700">
             <label htmlFor="post_category">Category:</label>
           </div>
           <select
@@ -67,6 +52,22 @@ export const PostForm = () => {
               </option>
             ))}
           </select>
+        </div>
+
+        <div className="form-group block mb-2 text-sm font-bold text-gray-700">
+          <div className="block mb-2 text-sm font-bold text-gray-700">
+            <label htmlFor="name ">Title of post:</label>
+          </div>
+          <input
+            type="text"
+            name="title"
+            placeholder="I'm starting to learn ..."
+            required
+            autoFocus
+            className="form-control form-control w-2/3 shadow appearance-none border rounded  py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            value={currentPost.title}
+            onChange={changePostState}
+          />
         </div>
 
         <div className="form-group">

@@ -15,7 +15,7 @@ export const Profile = () => {
         <article className="profile p-8 m-0 bg-white rounded-xl shadow-md overflow-hidden  mt-12">
           <section className="profile__info flex ">
             <img
-              className="inline object-cover w-48 h-40 mr-2 rounded-full"
+              className="inline object-cover w-40 h-40 mr-2 rounded-full"
               src={profile.app_user?.image_url}
               alt="profile picture"
             ></img>
