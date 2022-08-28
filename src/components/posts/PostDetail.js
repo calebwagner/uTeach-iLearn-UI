@@ -25,9 +25,17 @@ export const PostDetail = ({ post }) => {
     });
   }, [postIsSaved]);
 
-  const refreshPage = () => {
+  // function savedPost(post) {
+  //   return post?.id === post.post.id;
+  // }
+
+  // const refreshPage = () => {
+  //   window.location.reload();
+  // };
+
+  function refreshPage() {
     window.location.reload();
-  };
+  }
 
   const SaveThePost = () => {
     savePost({
@@ -36,12 +44,46 @@ export const PostDetail = ({ post }) => {
     }).then(refreshPage);
   };
 
-  const foundSavedPost = savedPosts.find((savedPost) => {
-    return post?.id === savedPost?.post.id;
+  // function returnFoundSavedPost()
+  // const foundSavedPost = savedPosts.find((savedPost) => {
+  //   return post?.id === savedPost?.post.id;
+  // });
+
+  // function foundSavedPost() {
+  //   if ()
+  // }
+
+  // var array = [...]
+
+  // function getAll(ids){
+  //   return array.find(function matchId(record){
+  //     return record.id == record
+  //   })
+  // }
+
+  // function getFoundSavedPost(postId) {
+  //   return savePost.find(function savedPost(theSavedPost){
+  //     return post?.id === theSavedPost?.post.id;
+  //   })
+  // }
+
+  // const unsaveThePost = () => {
+  //   unsavePost(foundSavedPost.id).then(refreshPage);
+  // };
+
+  let foundSavedPost = savedPosts.find(function savedPost(theSavedPost) {
+    return post?.id === theSavedPost?.post.id;
   });
 
   const unsaveThePost = () => {
-    unsavePost(foundSavedPost.id).then(refreshPage);
+    let foundSavedPost = savedPosts.find((savedPost) => {
+      return post?.id === savedPost?.post.id;
+    });
+    if (foundSavedPost) {
+      unsavePost(
+        // TODO: PUT FUNCTION() HERE ...
+        foundSavedPost.id).then(refreshPage);
+    }
   };
 
   const [time, setTime] = useState("");
