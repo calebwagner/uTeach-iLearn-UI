@@ -1,6 +1,8 @@
 # uTeach iLearn
 
-A simple ReactJS app that allows teachers and learners to connect.
+An updated version I'm working on can be found here [TeachMe-Client](https://github.com/calebwagner/TeachMe-Client) app.
+
+This is a simple ReactJS app that allows teachers and learners to connect.
 
 Click [here](https://github.com/calebwagner/uteach-ilearn-server) to view the server-side repo built using Django.
 
